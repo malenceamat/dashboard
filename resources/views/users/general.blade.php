@@ -20,7 +20,6 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -49,8 +48,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>
