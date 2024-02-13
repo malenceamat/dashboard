@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href={{asset("images/logo-novgu-blue.png")}}>
+    <title>Цифровая Кафедра</title>
+    <link rel="stylesheet" href={{asset("assets/css/vendor.bundle.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/style-azure.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/theme.css")}}>
+    <style>
+        font-face {
+            font-family: 'PT Sans', sans-serif !important;
+        }
+    </style>
+</head>
+<body class="nk-body">
+<div class="nk-wrap">
+    <header class="nk-header page-header is-transparent is-sticky is-shrink is-dark has-fixed" id="header">
+        @include('users.header')
+        @include('users.banner')
+    </header>
+    <main class="nk-pages bg-transparent">
+        @yield('dashboard_user')
+    </main>
+</div>
+<div class="preloader"><span class="spinner spinner-round"></span></div>
+<script src={{asset("assets/js/jquery.bundle.js")}}></script>
+<script src={{asset("assets/js/scripts.js")}}></script>
+<script src={{asset("assets/js/charts.js")}}></script>
+</body>
+</html>
