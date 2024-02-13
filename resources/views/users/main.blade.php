@@ -9,9 +9,11 @@
     <link rel="stylesheet" href={{asset("assets/css/vendor.bundle.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/style-azure.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/theme.css")}}>
+    <link href={{asset("/layouts/vertical-dark-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css" />
+    <link href={{asset("/layouts/vertical-dark-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css" />
     <style>
         font-face {
-            font-family: 'PT Sans', sans-serif !important;
+            font-family: 'PT Sans', sans-serif;
         }
     </style>
 </head>
@@ -19,11 +21,14 @@
 <div class="nk-wrap">
     <header class="nk-header page-header is-transparent is-sticky is-shrink is-dark has-fixed" id="header">
         @include('users.header')
-        @include('users.banner')
     </header>
-    <main class="nk-pages bg-transparent">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
         @yield('dashboard_user')
-    </main>
+    </div>
 </div>
 <div class="preloader"><span class="spinner spinner-round"></span></div>
 <script src={{asset("assets/js/jquery.bundle.js")}}></script>

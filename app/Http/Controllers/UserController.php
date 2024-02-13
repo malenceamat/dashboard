@@ -11,7 +11,6 @@ class UserController extends Controller
     public function index()
     {
         $data = Dashboard::get();
-        $banner = Banner::get();
-        return view('users.general',compact('data','banner'));
+        return view('users.general',compact('data'));
     }
 }

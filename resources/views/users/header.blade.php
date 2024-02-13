@@ -1,5 +1,5 @@
 <div class="header-main ">
-    <div class="header-container container ">
+    <div class="container">
         <div class="header-wrap">
             <div class="header-logo header-logo-ls logo animated" data-animate="fadeInDown" data-delay=".65">
                 <a href="" class="logo-link">
