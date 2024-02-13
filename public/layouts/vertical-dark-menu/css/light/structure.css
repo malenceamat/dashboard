@@ -228,7 +228,7 @@ code {
   margin-left: 80px;
 }
 
-/*
+/* 
 =====================
     Navigation Bar
 =====================
@@ -743,7 +743,7 @@ body .navbar .dark-mode, body:not(.dark) .navbar .dark-mode {
   height: 18px;
 }
 
-/*
+/* 
 ===============
     Sidebar
 ===============
@@ -1271,7 +1271,7 @@ body .navbar .dark-mode, body:not(.dark) .navbar .dark-mode {
   animation-name: e-fadeInUp;
 }
 
-/*
+/*  
     ======================
         Footer-wrapper
     ======================
@@ -1323,7 +1323,7 @@ body.alt-menu #content {
   transition: none;
 }
 
-/*
+/*  
     ======================
         MEDIA QUERIES
     ======================

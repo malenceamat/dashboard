@@ -22,9 +22,10 @@ class DashboardController extends Controller
     {
         $data = Dashboard::create($req->all());
         $result = ($data->base) + ($data->special);     //считаем итог
-        $data->result = $result;     //считаем итог
+        $data->result = $result;                        //считаем итог
 
-        $percent = ($data->base / $data->special) * 100;
+        $percents = ($data->special * 100) / $data->base;
+        $percent = round($percents, 1);
         $data->percent = $percent;
         $data->save();
         return redirect('/dashboard');
@@ -40,10 +41,9 @@ class DashboardController extends Controller
         $result = ($data->base) + ($data->special);  //считаем итог
         $data -> result = $result;                   //считаем итог
 
-
-        $percent = ($data->special * 100) / $data->base;
+        $percents = ($data->special * 100) / $data->base;
+        $percent = round($percents, 1);
         $data->percent = $percent;
-
 
         $data->save();
         return redirect('/dashboard');

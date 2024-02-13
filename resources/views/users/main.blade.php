@@ -29,6 +29,7 @@
     <div class="container">
         @yield('dashboard_user')
     </div>
+    @include('users.footer')
 </div>
 <div class="preloader"><span class="spinner spinner-round"></span></div>
 <script src={{asset("assets/js/jquery.bundle.js")}}></script>
