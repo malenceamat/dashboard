@@ -14,9 +14,9 @@
             <thead>
             <tr>
                 <th class="col" scope="col">Название</th>
-                <th class="text-center" scope="col">Фактические значения</th>
-                <th class="text-center" scope="col">Плановые значения</th>
-                <th class="text-center" scope="col">Процент выполнения</th>
+                <th class="text-center" scope="col">Спец. часть</th>
+                <th class="text-center" scope="col">Базовая часть</th>
+                <th class="text-center" scope="col">Итого</th>
                 <th>
                 </th>
             </tr>
@@ -33,7 +33,7 @@
                 </td>
                 <td class="text-center">{{$me['base']}}</td>
                 <td class="text-center">
-                    {{$me['percent']. '%' }}
+                    {{$me['result']}}
                 </td>
                 <td class="text-center">
                     <div class="action-btns">

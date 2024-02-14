@@ -19,14 +19,14 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="special">Фактические значения</label>
+                                            <label for="special">Спец. часть</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Фактические значения"
+                                                   placeholder="Спец. часть"
                                                    id="special" name="special"
                                                    value="{{$data['special']}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="base">Плановые значения</label>
+                                            <label for="base">Базовая часть</label>
                                             <input type="number" class="form-control mb-3"
                                                    placeholder="Плановые значения"
                                                    id="base" name="base"

@@ -25,9 +25,9 @@
                         <thead>
                         <tr>
                             <th class="ps-0 text-center" scope="col">Название</th>
-                            <th class="text-center">Фактические значения</th>
-                            <th class="text-center" scope="col">Плановые значения</th>
-                            <th class="text-center" scope="col">Процент выполнения</th>
+                            <th class="text-center">Спец. часть</th>
+                            <th class="text-center" scope="col">Базовая часть</th>
+                            <th class="text-center" scope="col">Итого</th>
                         </tr>
                         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 <td class="text-center">{{$dashboard['special']}}</td>
                                 <td class="text-center">{{$dashboard['base']}}</td>
                                 <td class="text-center">
-                                    <span>{{$dashboard['percent']. '%'}}</span>
+                                    <span>{{$dashboard['result']}}</span>
                                 </td>
                             </tr>
                         @endforeach
