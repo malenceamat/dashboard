@@ -2,7 +2,7 @@
 @section('dashboard_user')
     <style>
         .sem {
-            white-space: normal !important;
+            white-space: pre-line !important;
             word-wrap: break-word !important;
         }
     </style>
@@ -12,6 +12,7 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                        <br>
                         <h4 class="text-center">Цели ДПО. 2024</h4>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
                         @foreach($data as $dashboard)
                             <tr>
                                 <td class="text-center sem"
-                                    style="text-align: left!important;border-right: 1px solid #000000;color: black">{!! $dashboard['name'] !!}
+                                    style="text-align: justify!important;border-right: 1px solid #000000;color: black">{!! $dashboard['name'] !!}
                                     <br>
                                     <span>{!! $dashboard['sub_name'] !!}</span>
                                 </td>
