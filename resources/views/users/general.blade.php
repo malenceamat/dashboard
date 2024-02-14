@@ -3,13 +3,10 @@
     <style>
         .sem {
             white-space: normal !important;
-            max-width:400px !important;
-            word-wrap:break-word !important;
-        }
-        li{
-
+            word-wrap: break-word !important;
         }
     </style>
+
     <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
@@ -24,22 +21,49 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th class="ps-0 text-center" scope="col">Название</th>
-                            <th class="text-center">Спец. часть</th>
-                            <th class="text-center" scope="col">Базовая часть</th>
+                            <th class="ps-0 text-center" scope="col"
+                                style="border-right: 1px solid #000000;color: black">Название
+                            </th>
+                            <th class="text-center" colspan="3" style="border-right: 1px solid #000000;color: black">
+                                Спец. часть
+                            </th>
+                            <th class="text-center" scope="col" colspan="3"
+                                style="border-right: 1px solid #000000;color: black">Базовая часть
+                            </th>
+
                             <th class="text-center" scope="col">Итого</th>
                         </tr>
                         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
                         </thead>
                         <tbody>
+                        <tr>
+                            <td style="border-right: 1px solid #000000;color: black"></td>
+                            <th rowspan="1" class="text-center">Плановые значения</th>
+                            <td colspan="1" class="text-center">Фактические значения</td>
+                            <td colspan="1" class="text-center" style="border-right: 1px solid #000000;color: black">
+                                Процент выполнения
+                            </td>
+
+                            <th rowspan="1" class="text-center">Плановые значения</th>
+                            <td colspan="1" class="text-center">Фактические значения</td>
+                            <td colspan="1" class="text-center" style="border-right: 1px solid #000000;color: black">
+                                Процент выполнения
+                            </td>
+                        </tr>
+
                         @foreach($data as $dashboard)
                             <tr>
-                                <td class="text-center sem" style="text-align: left!important;">{!! $dashboard['name'] !!}
+                                <td class="text-center sem"
+                                    style="text-align: left!important;border-right: 1px solid #000000;color: black">{!! $dashboard['name'] !!}
                                     <br>
-                                <span>{!! $dashboard['sub_name'] !!}</span>
+                                    <span>{!! $dashboard['sub_name'] !!}</span>
                                 </td>
-                                <td class="text-center">{{$dashboard['special']}}</td>
-                                <td class="text-center">{{$dashboard['base']}}</td>
+                                <td class="text-center">{{$dashboard['spec_plan']}}</td>
+                                <td class="text-center">{{$dashboard['spec_fact']}}</td>
+                                <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$dashboard['spec_percent']. '%'}}</td>
+                                <td class="text-center">{{$dashboard['base_plan']}}</td>
+                                <td class="text-center">{{$dashboard['base_fact']}}</td>
+                                <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$dashboard['base_percent']. '%'}}</td>
                                 <td class="text-center">
                                     <span>{{$dashboard['result']}}</span>
                                 </td>
@@ -51,5 +75,4 @@
             </div>
         </div>
     </div>
-
 @endsection

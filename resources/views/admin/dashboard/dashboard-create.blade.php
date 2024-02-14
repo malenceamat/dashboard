@@ -18,20 +18,39 @@
                             <div class="form">
                                 <div class="row">
                                     <div class="col-md-6">
+
+
+
                                         <div class="form-group">
-                                            <label for="special">Спец. часть</label>
+                                            <label for="spec_plan">Плановые значения Спец. части</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Спец. часть"
-                                                   id="special" name="special"
-                                                   value="{{$data['special']}}">
+                                                   placeholder="Плановые значения Спец. части"
+                                                   id="spec_plan" name="spec_plan"
+                                                   value="{{$data['spec_plan']}}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="base">Базовая часть</label>
+                                            <label for="spec_fact">Фактические значения Спец. части</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Плановые значения"
-                                                   id="base" name="base"
-                                                   value="{{$data['base']}}">
+                                                   placeholder="Фактические значения Спец. части"
+                                                   id="spec_fact" name="spec_fact"
+                                                   value="{{$data['spec_fact']}}">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="base_plan">Плановые значения Базовой части</label>
+                                            <input type="number" class="form-control mb-3"
+                                                   placeholder="Плановые значения Базовой части"
+                                                   id="base_plan" name="base_plan"
+                                                   value="{{$data['base_plan']}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="base_fact">Фактические значения Базовой части</label>
+                                            <input type="number" class="form-control mb-3"
+                                                   placeholder="Фактические значения Базовой части"
+                                                   id="base_fact" name="base_fact"
+                                                   value="{{$data['base_fact']}}">
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label for="name">Название</label>
                                             <input type="text" class="form-control mb-3"
