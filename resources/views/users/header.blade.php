@@ -4,7 +4,7 @@
             <div class="header-logo header-logo-ls logo animated" data-animate="fadeInDown" data-delay=".65">
                 <a href="" class="logo-link">
                     <img class="logo-light"
-                         src={{asset("images/image.png")}} srcset={{asset("images/logo.png")}} alt="logo">
+                         src={{asset("images/png.png")}} srcset={{asset("images/png.png")}} alt="logo">
                 </a>
             </div>
         </div>
