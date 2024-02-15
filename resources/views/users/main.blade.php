@@ -26,7 +26,7 @@
     <br>
     <br>
     <br>
-    <div class="">
+    <div class="container">
         @yield('dashboard_user')
     </div>
     @include('users.footer')

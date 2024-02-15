@@ -39,16 +39,16 @@
                         <tbody>
                         <tr>
                             <td style="border-right: 1px solid #000000;color: black"></td>
-                            <th rowspan="1" class="text-center">Плановые значения</th>
-                            <td colspan="1" class="text-center">Фактические значения</td>
+                            <th rowspan="1" class="text-center">План. значения</th>
+                            <td colspan="1" class="text-center">Факт. значения</td>
                             <td colspan="1" class="text-center" style="border-right: 1px solid #000000;color: black">
-                                Процент выполнения
+                                %
                             </td>
 
-                            <th rowspan="1" class="text-center">Плановые значения</th>
-                            <td colspan="1" class="text-center">Фактические значения</td>
+                            <th rowspan="1" class="text-center">План. значения</th>
+                            <td colspan="1" class="text-center">Факт. значения</td>
                             <td colspan="1" class="text-center" style="border-right: 1px solid #000000;color: black">
-                                Процент выполнения
+                                %
                             </td>
                         </tr>
 
