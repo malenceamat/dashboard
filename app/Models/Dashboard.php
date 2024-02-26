@@ -11,5 +11,5 @@ class Dashboard extends Model
 
     protected $table = 'dashboard';
 
-    protected $fillable = ['name','base','special','result','percent'];
+    protected $fillable = ['name','base_plan','base_percent','base_fact','spec_plan','spec_fact','spec_percent','sub_name','result'];
 }
