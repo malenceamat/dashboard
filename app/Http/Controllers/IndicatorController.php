@@ -26,10 +26,8 @@ class IndicatorController extends Controller
     }
     public function edit_show(Request $req, $id)
     {
-
         $programs = Program::get();
-        $indicator = Indicator::find($id);
-        dd($indicator);
+        $indicator = Indicator::with('programs')->find($id);
         return view('admin.indicator.indicator_edit',compact('indicator','programs'));
     }
     public function update(Request $req)

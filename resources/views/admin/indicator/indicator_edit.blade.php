@@ -1,6 +1,6 @@
 @extends('admin.main')
 @section('indicator_edit')
-    {{--<style>
+    <style>
         .sem {
             white-space: pre-line !important;
             word-wrap: break-word !important;
@@ -29,7 +29,7 @@
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">
                     Университет
                 </th>
-                <th class="text-center" style="border-right: 1px solid #000000;color: black">Название</th>
+                <th class="text-center" style="border-right: 1px solid #000000;color: black">Описание</th>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Фактическое
                     значение
                 </th>
@@ -58,7 +58,7 @@
                     </div>
                 </td>
             </tr>
-            @foreach($programs as $program)
+            @foreach($indicator->programs as $program)
                 <tr>
                     <td class="text-center"
                         style="border-right: 1px solid #000000;color: black">{{$program['university']}}
@@ -87,6 +87,5 @@
             @endforeach
             </tbody>
         </table>
-    </div>--}}
-    {{$indicator->id}}
+    </div>
 @endsection
