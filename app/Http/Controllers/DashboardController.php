@@ -20,17 +20,14 @@ class DashboardController extends Controller
     }
     public function create(Request $req)
     {
-        $data = Dashboard::create($req->all());
-        $result = ($data->spec_plan) + ($data->base_plan);     //считаем итог
-        $data->result = $result;                               //считаем итог
 
-        $percents_spec = ($data->spec_fact * 100) / $data->spec_plan;
-        $percent_spec = round($percents_spec, 1);
-        $data->spec_percent = $percent_spec;
-
-        $percents_base = ($data->base_fact * 100) / $data->base_plan;
-        $percent_base = round($percents_base, 1);
-        $data->base_percent = $percent_base;
+        $data = new Dashboard;
+        $data->name = $req->name;
+        $data->sub_name = $req->sub_name;
+        $data->plan = $req->plan;
+        $data->fact = $req->fact;
+        $data->result =  ($req->plan) + ($req->fact);
+        $data->percent = round(($req->fact * 100) / $req->plan, 1);
 
         $data->save();
         return redirect('/dashboard');

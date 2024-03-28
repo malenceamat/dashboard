@@ -36,7 +36,13 @@
                         @endif
                         <div class="widget-content widget-content-area">
                             @yield('dashboard')
+                            @yield('program_create')
+                            @yield('program_update')
+                            @yield('indicator_create')
+                            @yield('indicator_edit')
+                            @yield('universities_edit')
                             @yield('dashboard-create')
+                            @yield('universities_create')
                         </div>
                     </div>
                 </div>

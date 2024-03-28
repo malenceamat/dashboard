@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Dashboard extends Migration
+class CreateProgramsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class Dashboard extends Migration
      */
     public function up()
     {
-        Schema::create('dashboard', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->longText('name')->nullable();
-            $table->longText('plan')->nullable();
-            $table->longText('fact')->nullable();
-            $table->longText('percent')->nullable();
-            $table->longText('sub_name')->nullable();
-            $table->longText('result')->nullable();
+            $table->string('university')->nullable();
+            $table->integer('fact')->nullable();
+            $table->integer('plan')->nullable();
+            $table->decimal('percent')->nullable();
+            $table->decimal('result')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class Dashboard extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dashboard');
+        Schema::dropIfExists('programs');
     }
 }
