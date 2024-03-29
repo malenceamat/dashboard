@@ -53,6 +53,7 @@
                                                                       id="hiddenArea"></textarea>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" value="{{$data['id']}}" name="indicators_id">
                                                 </div>
                                             </div>
                                         </div>

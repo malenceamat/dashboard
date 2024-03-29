@@ -30,10 +30,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dashboard-create/edit', [DashboardController::class, 'update']);
     Route::delete('/dashboard/{delete}', [DashboardController::class, 'delete']);
 
+    Route::get('/universities',[UniversityController::class,'index']);
+    Route::post('/universities_create/{id?}',[UniversityController::class,'create']);
+    Route::delete('/universities/{delete}', [UniversityController::class, 'delete']);
+    Route::get('/universities_update_show/{id}',[UniversityController::class,'update_show']);
+    Route::post('/universities_update',[UniversityController::class,'update']);
+
     Route::get('/indicator',[IndicatorController::class,'index']);
     Route::post('/indicator_create',[IndicatorController::class,'create']);
     Route::delete('/indicator/{delete}', [IndicatorController::class, 'delete']);
-    Route::get('/indicator',[IndicatorController::class,'index']);
 
     Route::get('/indicator_edit_show/{id}',[IndicatorController::class,'edit_show']);
     Route::post('/indicator_update',[IndicatorController::class,'update']);

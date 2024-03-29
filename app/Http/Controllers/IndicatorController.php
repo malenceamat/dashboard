@@ -24,11 +24,10 @@ class IndicatorController extends Controller
         Indicator::find($id)->delete();
         return back();
     }
-    public function edit_show(Request $req, $id)
+    public function edit_show($id)
     {
-        $programs = Program::get();
         $indicator = Indicator::with('programs')->find($id);
-        return view('admin.indicator.indicator_edit',compact('indicator','programs'));
+        return view('admin.indicator.indicator_edit',compact('indicator'));
     }
     public function update(Request $req)
     {

@@ -17,4 +17,8 @@ class Indicator extends Model
     {
         return $this->belongsToMany(Program::class,'indicator_program');
     }
+    public function universityes()
+    {
+        return $this->belongsToMany(University::class,'indicator_universities');
+    }
 }
