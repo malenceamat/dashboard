@@ -11,10 +11,14 @@ class Program extends Model
 
     protected $table = 'programs';
 
-    protected $fillable = ['name','fact','plan','percent','result','university'];
+    protected $fillable = ['name','fact','plan','percent','result','id_university'];
 
     public function indicators()
     {
         return $this->belongsToMany(Indicator::class,'indicator_program');
+    }
+    public function universities_program()
+    {
+        return $this->belongsToMany(University::class,'program_university');
     }
 }

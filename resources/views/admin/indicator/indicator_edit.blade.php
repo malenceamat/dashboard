@@ -53,15 +53,17 @@
                 <td class="text-center">
                     <div class="action-btns">
                         <a href="/program_create/{{$indicator['id']}}">
-                            <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Добавить строку</button>
+                            <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Добавить строку
+                            </button>
                         </a>
                     </div>
                 </td>
             </tr>
             @foreach($indicator->programs as $program)
+                @foreach($program->universities_program as $data)
                 <tr>
                     <td class="text-center"
-                        style="border-right: 1px solid #000000;color: black">{{$program['university']}}
+                        style="border-right: 1px solid #000000;color: black">{{$data['name']}}
                     </td>
                     <td class="text-center sem"
                         style="max-width: 650px;text-align: justify!important;border-right: 1px solid #000000;color: black">{!! $program['name'] !!}</td>
@@ -73,17 +75,21 @@
                         style="border-right: 1px solid #000000;color: black">{{$program['percent']}}</td>
                     <td class="text-center">
                         <div class="action-btns">
-                            <form method="POST" action="/delete_column/">
+                            <form method="POST" action="/delete_column/{{$program['id']}}">
                                 @csrf
                                 {{method_field('DELETE')}}
                                 <button class="btn btn-danger mb-2 me-4">Удалить</button>
                             </form>
-                            <a href="/program_show/{{$program['id']}}">
-                                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать</button>
-                            </a>
+                            <form method="get" action="/program_show/{{$program['id']}}">
+                                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
+                                </button>
+                                <input type="hidden" value="{{$indicator['id']}}" name="id_indicator">
+                            </form>
+
                         </div>
                     </td>
                 </tr>
+                @endforeach
             @endforeach
             </tbody>
         </table>

@@ -46,8 +46,7 @@
     <table id="zero-config" class="table dt-table-hover" style="width:100%">
         <thead>
         <tr>
-            <th class="text-center">Университет</th>
-            <th class="text-center">С каким показателем связан</th>
+            <th class="text-center">Университеты</th>
             <th class="text-center"></th>
         </tr>
         </thead>
@@ -55,7 +54,6 @@
         @foreach($university as $un)
             <tr>
                 <td class="text-center">{{$un['name']}}</td>
-                <td class="text-center">Показатель 1</td>
                 <td class="text-center">
                     <form method="POST" action="/universities/{{$un->id}}">
                         @csrf

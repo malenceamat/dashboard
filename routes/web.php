@@ -39,7 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/indicator',[IndicatorController::class,'index']);
     Route::post('/indicator_create',[IndicatorController::class,'create']);
     Route::delete('/indicator/{delete}', [IndicatorController::class, 'delete']);
-
     Route::get('/indicator_edit_show/{id}',[IndicatorController::class,'edit_show']);
     Route::post('/indicator_update',[IndicatorController::class,'update']);
 
@@ -47,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/program_save',[ProgramController::class,'create']);
     Route::get('/program_show/{id}',[ProgramController::class,'show']);
     Route::post('/program_update',[ProgramController::class,'update']);
+    Route::delete('/delete_column/{delete}', [ProgramController::class, 'delete']);
 
 });
 Route::get('/', [UserController::class, 'index']);

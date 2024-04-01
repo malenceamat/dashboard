@@ -16,7 +16,7 @@ class CreateProgramsTable extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->longText('name')->nullable();
-            $table->string('university')->nullable();
+            $table->integer('id_university')->nullable();
             $table->integer('fact')->nullable();
             $table->integer('plan')->nullable();
             $table->decimal('percent')->nullable();

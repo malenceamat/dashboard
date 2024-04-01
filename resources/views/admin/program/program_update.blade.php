@@ -1,4 +1,7 @@
 @extends('admin.main')
+<link rel="stylesheet" type="text/css" href={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
+<link rel="stylesheet" type="text/css"
+      href={{asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('program_update')
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
@@ -18,23 +21,23 @@
                                             <input type="number" class="form-control mb-3"
                                                    placeholder="Фактическое значение"
                                                    id="fact" name="fact"
-                                                   value="{{$program['fact']}}">
+                                                   value="{{$programs['fact']}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="plan">Плановое значение</label>
                                             <input type="number" class="form-control mb-3"
                                                    placeholder="Плановое значение"
-                                                   id="plan" name="plan" value="{{$program['plan']}}">
+                                                   id="plan" name="plan" value="{{$programs['plan']}}">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="university">Название университета</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Название университета"
-                                                   id="university" name="university" value="{{$program['university']}}">
-                                        </div>
+                                        <select id="multipleSelect" name="id_university">
+                                            @foreach($data->universityes as $program)
+                                                <option value="{{$program['id']}}"
+                                                        @if($programs->universities_program->contains('id', $program->id)) selected @endif >{{$program['name']}}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
-
-                                    <input type="hidden" name="id" value="{{$program['id']}}">
+                                    <input type="hidden" name="id" value="{{$programs['id']}}">
                                     <div class="col-md-6">
                                         <div id="basic" class="row layout-spacing layout-top-spacing">
                                             <div class="col-lg-12">
@@ -48,7 +51,7 @@
                                                     </div>
                                                     <div class="widget-content widget-content-area">
                                                         <div id="editor-container">
-                                                            <label for="hiddenArea">{!! $program['name'] !!}</label>
+                                                            <label for="hiddenArea">{!! $programs['name'] !!}</label>
                                                             <textarea name="name" style="display:none"
                                                                       id="hiddenArea"></textarea>
                                                         </div>
@@ -64,12 +67,19 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="container">
                 <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Обновить</button>
             </div>
         </form>
     </div>
-
+    <script>selectBox3 = new vanillaSelectBox("#multipleSelect", {
+            "minWidth": 178,
+            "maxHeight": 200,
+            "search": true,
+            "stayOpen": true
+        });
+    </script>
     <script src={{asset("../src/plugins/src/editors/quill/quill.js")}}></script>
     <script> quill = new Quill('#editor-container', {
             modules: {
@@ -89,3 +99,6 @@
         });
     </script>
 @endsection
+<script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
+<script src={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")}}></script>
+<script src={{asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")}}></script>

@@ -15,14 +15,9 @@
                            value="{{$data['name']}}" required>
                 </div>
                 <select id="multipleSelect" multiple size="3" name="indicators[]">
-                    @foreach($indicators as $mam)
-                        <option value="{{$mam['id']}}">{{$mam['name']}}
-                            / {{$mam['name']}}</option>
-
-                        @foreach($mam->universityes as $in)
-                            <option value="{{$mam['id']}}">{{$mam['name']}}
-                                / {{$mam['name']}}</option>
-                        @endforeach
+                    @foreach($indicators as $indicator)
+                        <option value="{{$indicator->id}}"
+                                @if($data->pokazateli->contains('id', $indicator->id)) selected @endif>{{$indicator->name}}</option>
                     @endforeach
                 </select>
             </div>

@@ -21,6 +21,8 @@ class IndicatorController extends Controller
     }
     public function delete($id)
     {
+        Indicator::find($id)->universityes()->detach();
+        Indicator::find($id)->programs()->detach();
         Indicator::find($id)->delete();
         return back();
     }

@@ -1,4 +1,7 @@
 @extends('admin.main')
+<link rel="stylesheet" type="text/css" href={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
+<link rel="stylesheet" type="text/css"
+      href={{asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('program_create')
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
@@ -16,24 +19,22 @@
                                         <div class="form-group">
                                             <label for="fact">Фактическое значение</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Фактическое значение"
+                                                   placeholder="Фактическое значение" required
                                                    id="fact" name="fact">
                                         </div>
                                         <input type="hidden" value="{{$data['id']}}" name="indicators_id">
                                         <div class="form-group">
                                             <label for="plan">Плановое значение</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Плановое значение"
+                                                   placeholder="Плановое значение" required
                                                    id="plan" name="plan">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="university">Название университета</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Название университета"
-                                                   id="university" name="university">
-                                        </div>
+                                        <select id="multipleSelect" name="id_university">
+                                            @foreach($data->universityes as $programs)
+                                                <option value="{{$programs['id']}}">{{$programs['name']}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <input type="hidden" name="id">
                                     <div class="col-md-6">
                                         <div id="basic" class="row layout-spacing layout-top-spacing">
                                             <div class="col-lg-12">
@@ -62,12 +63,21 @@
                     </div>
                 </div>
             </div>
+            <br>
                 <div class="container">
                     <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать
                     </button>
                 </div>
         </form>
     </div>
+
+    <script>selectBox3 = new vanillaSelectBox("#multipleSelect", {
+            "minWidth": 178,
+            "maxHeight": 200,
+            "search": true,
+            "stayOpen": true
+        });
+    </script>
 
     <script src={{asset("../src/plugins/src/editors/quill/quill.js")}}></script>
     <script> quill = new Quill('#editor-container', {
@@ -88,3 +98,6 @@
         });
     </script>
 @endsection
+<script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
+<script src={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")}}></script>
+<script src={{asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")}}></script>

@@ -20,19 +20,15 @@ class UniversityController extends Controller
     }
     public function delete($id)
     {
+        University::find($id)->pokazateli()->detach();
         University::find($id)->delete();
         return back();
     }
     public function update_show($id)
     {
-        $indicators = Indicator::with('universityes')->get();
+        $indicators = Indicator::all();
         $data = University::with('pokazateli')->find($id);
-        foreach($data->pokazateli as $map) {
-        }
-        if (isset($map)) {
-            $id = $map;
-            return view('admin.universities.universities_edit',compact('data','indicators','id'));
-        }
+
         return view('admin.universities.universities_edit',compact('data','indicators'));
     }
     public function update(Request $req)
