@@ -1,0 +1,73 @@
+<?php $__env->startSection('indicator_create'); ?>
+    <style>
+        .modal-content {
+            background-color: white;
+        }
+    </style>
+
+
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Добавить показатель
+        </button>
+    </div>
+    <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Добавление показателя</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 col-12">
+                        <form action="/indicator_create" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <div class="form-group">
+                                <p>Название показателя</p>
+                                <label for="t-text" class="visually-hidden">Text</label>
+                                <input id="t-text" type="text" name="name" placeholder="Название показателя"
+                                       class="form-control" required>
+                                <input type="submit" class="mt-4 btn btn-primary" value="Добавить">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table id="zero-config" class="table dt-table-hover" style="width:100%">
+        <thead>
+        <tr>
+            <th class="text-center">Название</th>
+            <th class="text-center"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tr>
+                <td class="text-center"><?php echo e($d['name']); ?></td>
+                <td class="text-center">
+                    <form method="POST" action="/indicator/<?php echo e($d['id']); ?>">
+                        <?php echo csrf_field(); ?>
+                        <?php echo e(method_field('DELETE')); ?>
+
+                        <button class="btn btn-danger mb-2 me-4">Удалить</button>
+                    </form>
+                    <a href="/indicator_edit_show/<?php echo e($d['id']); ?>">
+                        <button class="btn btn-outline-secondary mb-2 me-4">Редактировать</button>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/indicator/indicator_create.blade.php ENDPATH**/ ?>
