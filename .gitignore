@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /storage
+/storage/framework/sessions
+/storage/framework/views
 /vendor
 /public/scss
 /public/layouts
