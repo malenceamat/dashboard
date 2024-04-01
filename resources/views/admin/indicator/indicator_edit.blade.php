@@ -27,7 +27,7 @@
             <thead>
             <tr>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">
-                    Университет
+                    Институты
                 </th>
                 <th class="text-center" style="border-right: 1px solid #000000;color: black">Описание</th>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Фактическое

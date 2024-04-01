@@ -8,10 +8,10 @@
             <div class="col-lg-6 col-12 ">
                 @csrf
                 <div class="form-group">
-                    <p>Название университета</p>
+                    <p>Название института</p>
                     <label for="t-text" class="visually-hidden">Text</label>
                     <input type="hidden" name="id" value="{{$data['id']}}">
-                    <input id="t-text" type="text" name="name" placeholder="Название университета" class="form-control"
+                    <input id="t-text" type="text" name="name" placeholder="Название института" class="form-control"
                            value="{{$data['name']}}" required>
                 </div>
                 <select id="multipleSelect" multiple size="3" name="indicators[]">

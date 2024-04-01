@@ -9,7 +9,7 @@
 
     <div class="text-center">
         <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Добавить университет
+            Добавить институт
         </button>
     </div>
     <br>
@@ -18,7 +18,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Добавление университета</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Добавление института</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -31,9 +31,9 @@
                         <form action="/universities_create" method="POST">
                             @csrf
                             <div class="form-group">
-                                <p>Название университета</p>
+                                <p>Название института</p>
                                 <label for="t-text" class="visually-hidden">Text</label>
-                                <input id="t-text" type="text" name="name" placeholder="Название университета"
+                                <input id="t-text" type="text" name="name" placeholder="Название института"
                                        class="form-control" required>
                                 <input type="submit" class="mt-4 btn btn-primary" value="Добавить">
                             </div>
@@ -46,7 +46,7 @@
     <table id="zero-config" class="table dt-table-hover" style="width:100%">
         <thead>
         <tr>
-            <th class="text-center">Университеты</th>
+            <th class="text-center">Институты</th>
             <th class="text-center"></th>
         </tr>
         </thead>
