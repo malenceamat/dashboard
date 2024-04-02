@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dashboard extends Model
+class indicator_universities extends Model
 {
     use HasFactory;
 
-    protected $table = 'dashboard';
+    protected $table = 'indicator_universities';
 
-    protected $fillable = ['name','plan','fact','percent'];
+    protected $fillable = ['indicator_id','university_id'];
 }

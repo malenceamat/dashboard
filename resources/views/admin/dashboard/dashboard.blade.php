@@ -14,11 +14,10 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th class="ps-0 text-center" scope="col" style="border-right: 1px solid #000000;color: black">Название</th>
+                <th class="ps-0 text-center" scope="col" style="border-right: 1px solid #000000;color: black">Описание</th>
                 <th class="text-center" style="border-right: 1px solid #000000;color: black">Фактические значения</th>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Плановые значения</th>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">% Выполнения</th>
-                <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Итого</th>
                 <th>
                 </th>
             </tr>
@@ -32,7 +31,6 @@
                     <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['plan']}}</td>
                     <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['fact']}}</td>
                     <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['percent']}}</td>
-                    <td class="text-center" style="border-right: 1px solid #000000;color: black"><span>{{$me['result']}}</span></td>
                     <td class="text-center">
                         <div class="action-btns">
                             <form method="POST" action="/dashboard/{{$me->id}}">

@@ -17,9 +17,7 @@ class ProgramController extends Controller
     }
     public function create(Request $req)
     {
-        $fact = $req->fact;
-        $plan = $req->plan;
-        $percent = round(($fact * 100) / $plan, 1);
+        $percent = round(($req->fact * 100) / $req->plan, 1);
         $data = Program::create(array_merge($req->all(), ['percent' => $percent]));
         $data->indicators()->sync($req->indicators_id);
         $data->universities_program()->sync($req->id_university);
@@ -35,9 +33,7 @@ class ProgramController extends Controller
     }
     public function update(Request $req)
     {
-        $fact = $req->fact;
-        $plan = $req->plan;
-        $percent = round(($fact * 100) / $plan, 1);
+        $percent = round(($req->fact * 100) / $req->plan, 1);
         Program::find($req->id)->update(array_merge($req->all(),['percent' => $percent]));
         Program::find($req->id)->universities_program()->sync($req->id_university);
         return redirect('indicator_edit_show/' . $req->indicators_id );

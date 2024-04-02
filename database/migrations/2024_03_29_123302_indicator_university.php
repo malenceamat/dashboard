@@ -14,8 +14,10 @@ class IndicatorUniversity extends Migration
     public function up()
     {
         Schema::create('indicator_universities', function (Blueprint $table) {
+        $table->id();
         $table->integer('indicator_id');
         $table->integer('university_id');
+        $table->timestamps();
         });
     }
 

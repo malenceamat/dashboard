@@ -26,7 +26,7 @@ class UniversityController extends Controller
     }
     public function update_show($id)
     {
-        $indicators = Indicator::all();
+        $indicators = Indicator::orderBy('created_at')->get();
         $data = University::with('pokazateli')->find($id);
 
         return view('admin.universities.universities_edit',compact('data','indicators'));

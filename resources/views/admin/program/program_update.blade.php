@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <div class="profile-image">
-        <form action="/program_update" method="post" enctype="multipart/form-data">
+        <form action="/program_update" method="post" enctype="multipart/form-data" id="save">
             @csrf
             <div class="tab-content" id="animateLineContent-4">
                 <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
@@ -37,7 +37,6 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <input type="hidden" name="id" value="{{$programs['id']}}">
                                     <div class="col-md-6">
                                         <div id="basic" class="row layout-spacing layout-top-spacing">
                                             <div class="col-lg-12">
@@ -56,12 +55,13 @@
                                                                       id="hiddenArea"></textarea>
                                                         </div>
                                                     </div>
-                                                    <input type="hidden" value="{{$data['id']}}" name="indicators_id">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="id" value="{{$programs['id']}}">
+                                <input type="hidden" value="{{$data['id']}}" name="indicators_id">
                             </div>
                         </div>
                     </div>
@@ -84,17 +84,17 @@
     <script> quill = new Quill('#editor-container', {
             modules: {
                 toolbar: [
-                    [{header: [1, 2, false]}],
+                    [{ header: [1, 2, false] }],
                     ['bold', 'italic', 'underline']
                 ]
             },
             placeholder: 'Введите текст',
             theme: 'snow'
         });
-        $(document).ready(function () {
+        $(document).ready(function(){
             $("#save").on("submit", function () {
                 let value = $('.ql-editor').html();
-                $(this).append("<textarea name='name' style='display:none'>" + value + "</textarea>");
+                $(this).append("<textarea name='name' style='display:none'>"+value+"</textarea>");
             });
         });
     </script>

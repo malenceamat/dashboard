@@ -19,8 +19,6 @@ class Dashboard extends Migration
             $table->longText('plan')->nullable();
             $table->longText('fact')->nullable();
             $table->longText('percent')->nullable();
-            $table->longText('sub_name')->nullable();
-            $table->longText('result')->nullable();
             $table->timestamps();
         });
     }

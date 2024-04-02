@@ -48,7 +48,7 @@
                         <a href="/dashboard"> Дэшборд </a>
                     </li>
                     <li class="{{ (request()->is('universities')) ? 'active' : '' }}">
-                        <a href="/universities"> Университеты </a>
+                        <a href="/universities"> Институты </a>
                     </li>
                     <li class="{{ (request()->is('indicator')) ? 'active' : '' }}">
                         <a href="/indicator"> Показатели </a>
