@@ -17,7 +17,7 @@
         }
     </style>
 </head>
-<body class="nk-body">
+<body class="nk-body ">
 <div class="nk-wrap">
     <header class="nk-header page-header is-transparent is-sticky is-shrink is-dark has-fixed" id="header">
         @include('users.header')

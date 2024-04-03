@@ -1,4 +1,9 @@
 @extends('users.main')
+<link href={{asset("src/plugins/src/apex/apexcharts.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("src/assets/css/light/components/list-group.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("src/assets/css/light/dashboard/dash_2.css")}} rel="stylesheet" type="text/css"/>
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 @section('dashboard_user')
     <style>
         .sem {
@@ -126,5 +131,14 @@
             </div>
         </div>
     @endforeach
+    <div class="container px-4 mx-auto">
 
+        <div class="p-6 m-20 bg-white rounded shadow">
+            {!! $chart->container() !!}
+        </div>
+
+    </div>
+    <script src="{{ $chart->cdn() }}"></script>
+
+    {{ $chart->script() }}
 @endsection
