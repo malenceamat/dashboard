@@ -21,25 +21,18 @@
 
 
                                         <div class="form-group">
-                                            <label for="spec_plan">Плановые значения Спец. части</label>
+                                            <label for="spec_plan">Плановое значение</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Плановые значения Спец. части"
-                                                   id="spec_plan" name="spec_plan"
-                                                   value="<?php echo e($data['spec_plan']); ?>">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="plan">Плановое значение </label>
-                                            <input type="number" class="form-control mb-3"
-                                                   placeholder="Фактические значения Спец. части"
+                                                   placeholder="Плановые значения"
                                                    id="plan" name="plan"
                                                    value="<?php echo e($data['plan']); ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">Название</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Название"
-                                                   id="name" name="name"
-                                                   value="<?php echo e($data['name']); ?>">
+                                            <label for="fact">Фактическое значение</label>
+                                            <input type="number" class="form-control mb-3"
+                                                   placeholder="Фактические значения"
+                                                   id="fact" name="fact"
+                                                   value="<?php echo e($data['fact']); ?>">
                                         </div>
                                     </div>
                                     <input type="hidden" name="id" value="<?php echo e($data['id']); ?>">
@@ -56,8 +49,8 @@
                                                     </div>
                                                     <div class="widget-content widget-content-area">
                                                         <div id="editor-container">
-                                                            <label for="hiddenArea"><?php echo $data['sub_name']; ?></label>
-                                                            <textarea name="sub_name" style="display:none"
+                                                            <label for="hiddenArea"><?php echo $data['name']; ?></label>
+                                                            <textarea name="name" style="display:none"
                                                                       id="hiddenArea"></textarea>
                                                         </div>
                                                     </div>
@@ -100,7 +93,7 @@
         $(document).ready(function(){
             $("#save").on("submit", function () {
                 let value = $('.ql-editor').html();
-                $(this).append("<textarea name='sub_name' style='display:none'>"+value+"</textarea>");
+                $(this).append("<textarea name='name' style='display:none'>"+value+"</textarea>");
             });
         });
     </script>

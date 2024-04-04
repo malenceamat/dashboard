@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")); ?>>
+<link rel="stylesheet" type="text/css"
+      href=<?php echo e(asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")); ?>>
 <?php $__env->startSection('program_create'); ?>
     <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
     <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
@@ -15,24 +18,22 @@
                                         <div class="form-group">
                                             <label for="fact">Фактическое значение</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Фактическое значение"
+                                                   placeholder="Фактическое значение" required
                                                    id="fact" name="fact">
                                         </div>
                                         <input type="hidden" value="<?php echo e($data['id']); ?>" name="indicators_id">
                                         <div class="form-group">
                                             <label for="plan">Плановое значение</label>
                                             <input type="number" class="form-control mb-3"
-                                                   placeholder="Плановое значение"
+                                                   placeholder="Плановое значение" required
                                                    id="plan" name="plan">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="university">Название университета</label>
-                                            <input type="text" class="form-control mb-3"
-                                                   placeholder="Название университета"
-                                                   id="university" name="university">
-                                        </div>
+                                        <select id="multipleSelect" name="id_university">
+                                            <?php $__currentLoopData = $data->universityes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $programs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($programs['id']); ?>"><?php echo e($programs['name']); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
                                     </div>
-                                    <input type="hidden" name="id">
                                     <div class="col-md-6">
                                         <div id="basic" class="row layout-spacing layout-top-spacing">
                                             <div class="col-lg-12">
@@ -61,12 +62,21 @@
                     </div>
                 </div>
             </div>
+            <br>
                 <div class="container">
                     <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать
                     </button>
                 </div>
         </form>
     </div>
+
+    <script>selectBox3 = new vanillaSelectBox("#multipleSelect", {
+            "minWidth": 178,
+            "maxHeight": 200,
+            "search": true,
+            "stayOpen": true
+        });
+    </script>
 
     <script src=<?php echo e(asset("../src/plugins/src/editors/quill/quill.js")); ?>></script>
     <script> quill = new Quill('#editor-container', {
@@ -87,5 +97,7 @@
         });
     </script>
 <?php $__env->stopSection(); ?>
-
+<script src=<?php echo e(asset("../src/assets/js/scrollspyNav.js")); ?>></script>
+<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")); ?>></script>
+<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")); ?>></script>
 <?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/program/program_create.blade.php ENDPATH**/ ?>

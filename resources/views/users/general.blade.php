@@ -70,7 +70,8 @@
 
 
 
-    @foreach($indicator as $table)
+        @foreach($indicator as $table)
+
         <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header">
@@ -125,20 +126,42 @@
                                 @endforeach
                             @endforeach
                             </tbody>
+
                         </table>
+
                     </div>
+
                 </div>
+
             </div>
         </div>
-    @endforeach
-    <div class="container px-4 mx-auto">
+
+
+
+
+
+@endforeach
+
+
+    @foreach($charts as $chart)
+
 
         <div class="p-6 m-20 bg-white rounded shadow">
             {!! $chart->container() !!}
         </div>
 
-    </div>
+
+        <script src="{{ $chart->cdn() }}"></script>
+
+        {{ $chart->script() }}
+
+    @endforeach
+
+    {{--{!! $chart->container() !!}
+
     <script src="{{ $chart->cdn() }}"></script>
 
-    {{ $chart->script() }}
+    {{ $chart->script() }}--}}
+
+
 @endsection

@@ -45,7 +45,7 @@
     <table id="zero-config" class="table dt-table-hover" style="width:100%">
         <thead>
         <tr>
-            <th class="text-center">Название</th>
+            <th class="text-center">Показатели</th>
             <th class="text-center"></th>
         </tr>
         </thead>

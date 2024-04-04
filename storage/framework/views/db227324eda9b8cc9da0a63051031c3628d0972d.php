@@ -26,7 +26,7 @@
             <thead>
             <tr>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">
-                    Университет
+                    Институты
                 </th>
                 <th class="text-center" style="border-right: 1px solid #000000;color: black">Описание</th>
                 <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Фактическое
@@ -52,15 +52,17 @@
                 <td class="text-center">
                     <div class="action-btns">
                         <a href="/program_create/<?php echo e($indicator['id']); ?>">
-                            <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Добавить строку</button>
+                            <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Добавить строку
+                            </button>
                         </a>
                     </div>
                 </td>
             </tr>
             <?php $__currentLoopData = $indicator->programs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $program): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $program->universities_program; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <td class="text-center"
-                        style="border-right: 1px solid #000000;color: black"><?php echo e($program['university']); ?>
+                        style="border-right: 1px solid #000000;color: black"><?php echo e($data['name']); ?>
 
                     </td>
                     <td class="text-center sem"
@@ -73,18 +75,22 @@
                         style="border-right: 1px solid #000000;color: black"><?php echo e($program['percent']); ?></td>
                     <td class="text-center">
                         <div class="action-btns">
-                            <form method="POST" action="/delete_column/">
+                            <form method="POST" action="/delete_column/<?php echo e($program['id']); ?>">
                                 <?php echo csrf_field(); ?>
                                 <?php echo e(method_field('DELETE')); ?>
 
                                 <button class="btn btn-danger mb-2 me-4">Удалить</button>
                             </form>
-                            <a href="/program_show/<?php echo e($program['id']); ?>">
-                                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать</button>
-                            </a>
+                            <form method="get" action="/program_show/<?php echo e($program['id']); ?>">
+                                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
+                                </button>
+                                <input type="hidden" value="<?php echo e($indicator['id']); ?>" name="id_indicator">
+                            </form>
+
                         </div>
                     </td>
                 </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
