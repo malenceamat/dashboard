@@ -23,9 +23,11 @@ class UserController extends Controller
 
         foreach($indicator as $qwe) {
             $universities_name = [];
+            $universities_plan = [];
+            $universities_fact = [];
             foreach ($qwe->programs as $lem) {
-                $universities_plan[] = $lem['plan'];
-                $universities_fact[] = $lem['fact'];
+                $universities_plan [] = $lem['plan'];
+                $universities_fact [] = $lem['fact'];
             }
 
             foreach ($qwe->universityes as $pep) {
@@ -33,16 +35,11 @@ class UserController extends Controller
             }
             $chart = (new BarChart)
                 ->setTitle($qwe['name'])
-                ->setSubtitle('Wins during season 2021.')
                 ->addData('Фактические значения', $universities_fact)
-                ->addData('Плановые значения', $universities_plan)
+                ->addData('Плановые значения',$universities_plan )
                 ->setXAxis($universities_name);
             $charts[$qwe->id] = $chart;
         }
-
-
-
-
         $data = Dashboard::get();
         return view('users.general',['data' => $data,'indicator' => $indicator,'charts' => $charts]);
     }

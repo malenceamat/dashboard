@@ -11,7 +11,6 @@
             word-wrap: break-word !important;
         }
     </style>
-
     <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
@@ -59,19 +58,11 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-        @foreach($indicator as $table)
-
+    @foreach($indicator as $table)
         <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header">
@@ -126,42 +117,17 @@
                                 @endforeach
                             @endforeach
                             </tbody>
-
                         </table>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
-
-
-
-
-
-@endforeach
-
-
+    @endforeach
     @foreach($charts as $chart)
-
-
         <div class="p-6 m-20 bg-white rounded shadow">
             {!! $chart->container() !!}
         </div>
-
-
         <script src="{{ $chart->cdn() }}"></script>
-
         {{ $chart->script() }}
-
     @endforeach
-
-    {{--{!! $chart->container() !!}
-
-    <script src="{{ $chart->cdn() }}"></script>
-
-    {{ $chart->script() }}--}}
-
-
 @endsection
