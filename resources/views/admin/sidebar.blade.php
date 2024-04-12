@@ -54,6 +54,25 @@
                         <a href="/indicator"> Показатели </a>
                     </li>
                     <li>
+                        <a href="#level-three" data-bs-toggle="collapse" aria-expanded="{{ (request()->is('slider','slider_show')) ? 'true' : 'false'}}"
+                           class="dropdown-toggle collapsed"> Таблицы
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-chevron-right">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </a>
+                        <ul class="collapse submenu list-unstyled sub-submenu {{ (request()->is('slider','slider_show')) ? 'show' : ''}}" id="level-three" data-bs-parent="#pages">
+                            <li class="{{ (request()->is('slider')) ? 'active' : ''}}">
+
+                                <a href=""> ПП/ПК </a>
+                            </li>
+                            <li class="{{ (request()->is('slider_show')) ? 'active' : ''}}">
+                                <a href=""> Показатели </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <div class="mt-3 space-y-1">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

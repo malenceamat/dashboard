@@ -1,7 +1,7 @@
 @extends('users.main')
-<link href={{asset("src/plugins/src/apex/apexcharts.css")}} rel="stylesheet" type="text/css">
-<link href={{asset("src/assets/css/light/components/list-group.css")}} rel="stylesheet" type="text/css">
-<link href={{asset("src/assets/css/light/dashboard/dash_2.css")}} rel="stylesheet" type="text/css"/>
+<link href={{asset("dashboard/public/src/plugins/src/apex/apexcharts.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("dashboard/public/src/assets/css/light/components/list-group.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("dashboard/public/src/assets/css/light/dashboard/dash_2.css")}} rel="stylesheet" type="text/css"/>
 
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 @section('dashboard_user')
@@ -75,7 +75,7 @@
                 </div>
                 <div class="widget-content widget-content-area">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover" style="line-height: normal!important;">
                             <thead>
                             <tr>
                                 <th class="text-center" scope="col"
@@ -99,7 +99,7 @@
                             <tbody>
                             @foreach($table->programs as $column)
                                 @foreach($column->universities_program as $data)
-                                    <tr>
+                                    <tr style="line-height: 10px!important;">
                                         <td class="text-center" style="border-right: 1px solid #000000;color: black">
                                             {{$data['name']}}
                                         </td>
@@ -122,12 +122,18 @@
                 </div>
             </div>
         </div>
+
+
+
     @endforeach
     @foreach($charts as $chart)
+
         <div class="p-6 m-20 bg-white rounded shadow">
             {!! $chart->container() !!}
         </div>
         <script src="{{ $chart->cdn() }}"></script>
         {{ $chart->script() }}
+
     @endforeach
+
 @endsection

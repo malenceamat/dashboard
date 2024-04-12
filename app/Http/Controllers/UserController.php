@@ -10,17 +10,9 @@ use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class UserController extends Controller
 {
-    public function index(MonthlyUsersChart $chart)
+    public function index()
     {
         $indicator = Indicator::with('universityes')->orderBy('created_at')->get();
-
-        /*$charts = [];
-
-        foreach($indicator as $qwe) {
-            $charts[$qwe->id] = $chart->build($qwe->id);
-        }*/
-
-
         foreach($indicator as $qwe) {
             $universities_name = [];
             $universities_plan = [];

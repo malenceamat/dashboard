@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [UserController::class, 'index']);
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -48,6 +51,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/program_update',[ProgramController::class,'update']);
     Route::delete('/delete_column/{delete}', [ProgramController::class, 'delete']);
 
+
+    Route::get('/program_edit_show/{id}',[ProgramController::class,'edit_show']);
+    Route::post('/program_update',[ProgramController::class,'update']);
+
 });
-Route::get('/', [UserController::class, 'index']);
 require __DIR__ . '/auth.php';

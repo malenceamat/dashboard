@@ -9,8 +9,8 @@
     <link rel="stylesheet" href={{asset("assets/css/vendor.bundle.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/style-azure.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/theme.css")}}>
-    <link href={{asset("/layouts/vertical-dark-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css" />
-    <link href={{asset("/layouts/vertical-dark-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css" />
+    <link href={{asset("dashboard/public//layouts/vertical-dark-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css" />
+    <link href={{asset("dashboard/public//layouts/vertical-dark-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css" />
     <style>
         font-face {
             font-family: 'PT Sans', sans-serif;

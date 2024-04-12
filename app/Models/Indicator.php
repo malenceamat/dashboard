@@ -21,4 +21,8 @@ class Indicator extends Model
     {
         return $this->belongsToMany(University::class,'indicator_universities');
     }
+    public function tables()
+    {
+        return$this->belongsToMany(TableCategory::class,'indicator_table_category');
+    }
 }

@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             DashboardSeeder::class,
             UniversitySeeder::class,
             IndicatorSeeder::class,
-            Indicator_UniversitySeeder::class
+            Indicator_UniversitySeeder::class,
+            TableCategorySeeder::class
         ]);
     }
 }
