@@ -6,20 +6,22 @@
             white-space: normal !important;
         }
     </style>
-    <form action="/dashboard-create">
-        @csrf
-        <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Создать строку</button>
-    </form>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="ps-0 text-center" scope="col" style="border-right: 1px solid #000000;color: black">Описание</th>
-                <th class="text-center" style="border-right: 1px solid #000000;color: black">Фактические значения</th>
-                <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">Плановые значения</th>
-                <th class="text-center" scope="col" style="border-right: 1px solid #000000;color: black">% Выполнения</th>
-                <th>
+                <th class="ps-0 text-center" >
+
+                        <form  action="/admin/dashboard-create" style="float:left">
+                            @csrf
+                            <button class="btn btn-light-success mb-2 me-4" style="margin: 10px">Создать строку</button>
+                        </form>
+                    Описание
                 </th>
+                <th class="text-center">Фактические значения</th>
+                <th class="text-center">Плановые значения</th>
+                <th class="text-center">Выполнено</th>
+                <th class="text-center">Действия</th>
             </tr>
             <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
             </thead>
@@ -27,21 +29,21 @@
 
             @foreach($data as $me)
                 <tr>
-                    <td class="text-center sem" style="text-align: left!important;border-right: 1px solid #000000;color: black">{!! $me['name'] !!}<span>{!! $me['sub_name'] !!}</span></td>
-                    <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['plan']}}</td>
-                    <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['fact']}}</td>
-                    <td class="text-center" style="border-right: 1px solid #000000;color: black">{{$me['percent']}}</td>
+                    <td class="text-center sem">{!! $me['name'] !!}<span>{!! $me['sub_name'] !!}</span></td>
+                    <td class="text-center">{{$me['plan']}}</td>
+                    <td class="text-center">{{$me['fact']}}</td>
+                    <td class="text-center">{{$me['percent']}} %</td>
                     <td class="text-center">
                         <div class="action-btns">
-                            <form method="POST" action="/dashboard/{{$me->id}}">
+                            <form style="display: inline-block" method="get" action="/admin/dashboard-create/{{$me->id}}">
+                                @csrf
+                                <button class="btn btn-light-warning" >Редактировать
+                                </button>
+                            </form>
+                            <form style="display: inline-block" method="POST" action="/admin/dashboard/{{$me->id}}">
                                 @csrf
                                 {{method_field('DELETE')}}
-                                <button class="btn btn-danger mb-2 me-4">Удалить</button>
-                            </form>
-                            <form method="get" action="/dashboard-create/{{$me->id}}">
-                                @csrf
-                                <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
-                                </button>
+                                <button class="btn btn-light-danger">Удалить</button>
                             </form>
                         </div>
                     </td>

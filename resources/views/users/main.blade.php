@@ -9,8 +9,8 @@
     <link rel="stylesheet" href={{asset("assets/css/vendor.bundle.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/style-azure.css")}}>
     <link rel="stylesheet" href={{asset("assets/css/theme.css")}}>
-    <link href={{asset("dashboard/public//layouts/vertical-dark-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css" />
-    <link href={{asset("dashboard/public//layouts/vertical-dark-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css" />
+    <link href={{asset("/layouts/vertical-dark-menu/css/light/plugins.css")}} rel="stylesheet" type="text/css" />
+    <link href={{asset("/layouts/vertical-dark-menu/css/dark/plugins.css")}} rel="stylesheet" type="text/css" />
     <style>
         font-face {
             font-family: 'PT Sans', sans-serif;
@@ -32,8 +32,10 @@
     @include('users.footer')
 </div>
 <div class="preloader"><span class="spinner spinner-round"></span></div>
+<script src={{asset("assets/js/jquery.min.js")}}></script>
 <script src={{asset("assets/js/jquery.bundle.js")}}></script>
 <script src={{asset("assets/js/scripts.js")}}></script>
 <script src={{asset("assets/js/charts.js")}}></script>
+<script src={{asset("https://cdn.jsdelivr.net/npm/apexcharts") }}></script>
 </body>
 </html>

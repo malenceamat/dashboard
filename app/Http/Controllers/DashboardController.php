@@ -21,18 +21,18 @@ class DashboardController extends Controller
     {
         $percent = round(($req->fact * 100) / $req->plan, 1);
         Dashboard::create(array_merge($req->all(), ['percent' => $percent]));
-        return redirect('/dashboard');
+        return redirect('/admin/dashboard');
     }
     public function update(Request $req)
     {
         $percent = round(($req->fact * 100) / $req->plan, 1);
         Dashboard::find($req->id)->update(array_merge($req->all(),['percent' => $percent]));
-        return redirect('/dashboard');
+        return redirect('/admin/dashboard');
     }
     public function delete($id)
     {
         $delete = Dashboard::find($id);
         $delete->delete();
-        return redirect('/dashboard');
+        return redirect('/admin/dashboard');
     }
 }

@@ -38,6 +38,6 @@ class IndicatorController extends Controller
     {
         Indicator::find($req->id)->update($req->all());
         Indicator::find($req->id)->tables()->sync($req->tables);
-        return redirect('/indicator');
+        return redirect('/admin/indicator');
     }
 }

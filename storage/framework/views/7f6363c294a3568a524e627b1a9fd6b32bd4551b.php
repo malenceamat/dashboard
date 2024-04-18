@@ -2,8 +2,8 @@
     <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
     <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
     <div class="profile-image">
-        <form <?php if(isset($data->id)): ?> action="<?php echo e(url('dashboard-create/edit')); ?>"
-              <?php else: ?> action="<?php echo e(url('dashboard-create/save')); ?>" <?php endif; ?> method="post"
+        <form <?php if(isset($data->id)): ?> action="<?php echo e(url('/admin/dashboard-create/edit')); ?>"
+              <?php else: ?> action="<?php echo e(url('/admin/dashboard-create/save')); ?>" <?php endif; ?> method="post"
               enctype="multipart/form-data" id="save">
             <?php echo csrf_field(); ?>
             <?php if($data->id): ?>
@@ -33,6 +33,12 @@
                                                    placeholder="Фактические значения"
                                                    id="fact" name="fact"
                                                    value="<?php echo e($data['fact']); ?>">
+                                            <div class="container">
+                                                <br>
+                                                <button class="btn btn-rounded btn-light-success btn-lg">
+                                                    <?php if(isset($data->id)): ?>Редактировать<?php else: ?>Создать<?php endif; ?>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" name="id" value="<?php echo e($data['id']); ?>">
@@ -64,18 +70,8 @@
                     </div>
                 </div>
             </div>
-            <?php if(isset($data->id)): ?>
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">
-                        Редактировать
-                    </button>
-                </div>
-            <?php else: ?>
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать
-                    </button>
-                </div>
-            <?php endif; ?>
+
+
         </form>
     </div>
 

@@ -1,9 +1,8 @@
 @extends('users.main')
-<link href={{asset("dashboard/public/src/plugins/src/apex/apexcharts.css")}} rel="stylesheet" type="text/css">
-<link href={{asset("dashboard/public/src/assets/css/light/components/list-group.css")}} rel="stylesheet" type="text/css">
-<link href={{asset("dashboard/public/src/assets/css/light/dashboard/dash_2.css")}} rel="stylesheet" type="text/css"/>
-
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link href={{asset("src/plugins/src/apex/apexcharts.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("src/assets/css/light/components/list-group.css")}} rel="stylesheet" type="text/css">
+<link href={{asset("src/assets/css/light/dashboard/dash_2.css")}} rel="stylesheet" type="text/css"/>
+<link href={{asset("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css")}} rel="stylesheet">
 @section('dashboard_user')
     <style>
         .sem {
@@ -11,7 +10,7 @@
             word-wrap: break-word !important;
         }
     </style>
-    <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
+    <div id="tableBordered" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
                 <div class="row">
@@ -23,19 +22,19 @@
             </div>
             <div class="widget-content widget-content-area">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th class="ps-0 text-center" scope="col"
-                                style="border-right: 1px solid #000000;color: black">Описание
+                            >Описание
                             </th>
-                            <th class="text-center" scope="col"
-                                style="border-right: 1px solid #000000;color: black">Фактическое значение
-                            </th>
-                            <th class="text-center" style="border-right: 1px solid #000000;color: black">
+                            <th class="text-center">
                                 Плановое значение
                             </th>
-                            <th class="text-center" style="border-right: 1px solid #000000;color: black">
+                            <th class="text-center" scope="col"
+                            >Фактическое значение
+                            </th>
+                            <th class="text-center">
                                 % Выполенения
                             </th>
                         </tr>
@@ -44,16 +43,13 @@
                         <tbody>
                         @foreach($data as $dashboard)
                             <tr>
-                                <td class="text-center sem"
-                                    style="text-align: justify!important;border-right: 1px solid #000000;color: black">{!! $dashboard['name'] !!}
+                                <td class="text-center sem">
+                                    {!! $dashboard['name'] !!}
                                     <br>
                                 </td>
-                                <td class="text-center"
-                                    style="border-right: 1px solid #000000;color: black">{{$dashboard['fact']}}</td>
-                                <td class="text-center"
-                                    style="border-right: 1px solid #000000;color: black">{{$dashboard['plan']}}</td>
-                                <td class="text-center"
-                                    style="border-right: 1px solid #000000;color: black">{{$dashboard['percent']}} </td>
+                                <td class="text-center">{{$dashboard['plan']}}</td>
+                                <td class="text-center">{{$dashboard['fact']}}</td>
+                                <td class="text-center">{{$dashboard['percent']}} </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -62,78 +58,83 @@
             </div>
         </div>
     </div>
-    @foreach($indicator as $table)
-        <div id="tableHover" class="col-lg-12 col-12 layout-spacing">
+
+    @foreach($indicators as $indicator)
+        <div id="tableHover" class="col-lg-12 col-10 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header">
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                             <br>
-                            <h4 class="text-center">{{$table['name']}}</h4>
+
+                            <h4 class="text-center">{{$indicator['name']}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <div class="table-responsive">
-                        <table class="table table-hover" style="line-height: normal!important;">
-                            <thead>
-                            <tr>
-                                <th class="text-center" scope="col"
-                                    style="border-right: 1px solid #000000;color: black">Институты
-                                </th>
-                                <th class="ps-0 text-center" scope="col"
-                                    style="border-right: 1px solid #000000;color: black">Описание
-                                </th>
-                                <th class="text-center" scope="col"
-                                    style="border-right: 1px solid #000000;color: black">Фактическое значение
-                                </th>
-                                <th class="text-center" style="border-right: 1px solid #000000;color: black">
-                                    Плановое значение
-                                </th>
-                                <th class="text-center" style="border-right: 1px solid #000000;color: black">
-                                    % Выполенения
-                                </th>
-                            </tr>
-                            <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
-                            </thead>
-                            <tbody>
-                            @foreach($table->programs as $column)
-                                @foreach($column->universities_program as $data)
-                                    <tr style="line-height: 10px!important;">
-                                        <td class="text-center" style="border-right: 1px solid #000000;color: black">
-                                            {{$data['name']}}
-                                        </td>
-                                        <td class="text-center sem"
-                                            style="text-align: justify!important;border-right: 1px solid #000000;color: black">{!! $column['name'] !!}
-                                            <br>
-                                        </td>
-                                        <td class="text-center"
-                                            style="border-right: 1px solid #000000;color: black">{{$column['fact']}}</td>
-                                        <td class="text-center"
-                                            style="border-right: 1px solid #000000;color: black">{{$column['plan']}}</td>
-                                        <td class="text-center"
-                                            style="border-right: 1px solid #000000;color: black">{{$column['percent']}} </td>
-                                    </tr>
+                    <div class="table-responsive" id="indicator_table-{{$indicator->id}}">
+                        {{--                @include('users.elements.indicator-table')--}}
+                    </div>
+                    <div>
+                        <hr>
+                        <div class="btn-group mb-2 me-4">
+                            <select class="btn btn-light dropdown-toggle" id="universities-{{$indicator->id}}">
+                                <option selected disabled>Институт</option>
+                                @foreach($universities as $university)
+                                    <option id="{{$university->id}}"
+                                            onclick="changeChart(id = {{$university->id}}, indicator_id = {{$indicator->id}})">{{$university->name}}</option>
                                 @endforeach
-                            @endforeach
-                            </tbody>
-                        </table>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="chart_table-{{$indicator->id}}">
+                        {{--                                                @include('users.elements.chart-table')--}}
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     @endforeach
-    @foreach($charts as $chart)
+    <script>
+        window.onload = () => {
+            @foreach($indicators as $indicator)
+            loadTable({{$indicator->id}});
+            @endforeach
 
-        <div class="p-6 m-20 bg-white rounded shadow">
-            {!! $chart->container() !!}
-        </div>
-        <script src="{{ $chart->cdn() }}"></script>
-        {{ $chart->script() }}
+        }
 
-    @endforeach
+        function loadTable(id) {
+            $.ajax({
+                    url: '{{route('ajax.update-table')}}',
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        indicator: id,
+                    },
+                    success: function (data) {
+                        $('#indicator_table-' + id).html(data);
+
+                    },
+                }
+            )
+        }
+
+        function changeChart(id) {
+            $.ajax({
+                    url: '{{route('ajax.update-chart')}}',
+                    type: "POST",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        university_id: id,
+                        indicator: indicator_id,
+                    },
+                    success: function (data) {
+                        $('#chart_table-' + indicator_id).html(data);
+
+                    },
+                }
+            )
+        }
+
+    </script>
 
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Indicator;
 use App\Models\Program;
 use App\Models\University;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class ProgramController extends Controller
 {
@@ -17,12 +18,15 @@ class ProgramController extends Controller
     }
     public function create(Request $req)
     {
-        $percent = round(($req->fact * 100) / $req->plan, 1);
-        $data = Program::create(array_merge($req->all(), ['percent' => $percent]));
+        $req_data = $req->all();
+        $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
+        $req_data['date'] = date('Y-m-d',strtotime($req->date));
+
+        $data = Program::create($req_data);
         $data->indicators()->sync($req->indicators_id);
         $data->universities_program()->sync($req->id_university);
 
-        return redirect('indicator_edit_show/' . $req->indicators_id);
+        return redirect('/admin/indicator_edit_show/' . $req->indicators_id);
     }
     public function show(Request $req,$id)
     {
@@ -36,7 +40,7 @@ class ProgramController extends Controller
         $percent = round(($req->fact * 100) / $req->plan, 1);
         Program::find($req->id)->update(array_merge($req->all(),['percent' => $percent]));
         Program::find($req->id)->universities_program()->sync($req->id_university);
-        return redirect('indicator_edit_show/' . $req->indicators_id );
+        return redirect('/admin/indicator_edit_show/' . $req->indicators_id );
     }
     public function delete($id)
     {

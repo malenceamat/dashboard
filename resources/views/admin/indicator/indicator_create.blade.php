@@ -7,11 +7,7 @@
     </style>
 
 
-    <div class="text-center">
-        <button type="button" class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Добавить показатель
-        </button>
-    </div>
+
     <br>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -28,14 +24,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-lg-12 col-12">
-                        <form action="/indicator_create" method="POST">
+                        <form action="admin//indicator_create" method="POST">
                             @csrf
                             <div class="form-group">
                                 <p>Название показателя</p>
                                 <label for="t-text" class="visually-hidden">Text</label>
                                 <input id="t-text" type="text" name="name" placeholder="Название показателя"
                                        class="form-control" required>
-                                <input type="submit" class="mt-4 btn btn-primary" value="Добавить">
+                                <br>
+                                <input type="submit" class="btn btn-light-success" value="Добавить">
                             </div>
                         </form>
                     </div>
@@ -43,26 +40,41 @@
             </div>
         </div>
     </div>
-    <table id="zero-config" class="table dt-table-hover" style="width:100%">
+
+    <table id="zero-config" class="table table-bordered" style="width:100%">
         <thead>
         <tr>
             <th class="text-center">Показатели</th>
-            <th class="text-center"></th>
+            <th class="text-center">
+                <div style="display: inline-block">
+                    <div class="text-center" style="text-align: center">
+                        Действия
+                    </div>
+
+                </div>
+                <div class="text-center" style="float:right; display: inline-block">
+                    <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Добавить показатель
+                    </button>
+                </div>
+            </th>
         </tr>
+        <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
         </thead>
         <tbody>
-        @foreach($data as $d)
+        @foreach($data as $el)
             <tr>
-                <td class="text-center">{{$d['name']}}</td>
+                <td class="text-center">{{$el['name']}}</td>
                 <td class="text-center">
-                    <form method="POST" action="/indicator/{{$d['id']}}">
+                    <a href="/admin/indicator_edit_show/{{$el['id']}}">
+                        <button class="btn btn-light-warning">Редактировать</button>
+                    </a>
+                    <form style="display: inline-block" method="POST" action="/admin/indicator/{{$el['id']}}">
                         @csrf
                         {{method_field('DELETE')}}
-                        <button class="btn btn-danger mb-2 me-4">Удалить</button>
+                        <button class="btn btn-light-danger">Удалить</button>
                     </form>
-                    <a href="/indicator_edit_show/{{$d['id']}}">
-                        <button class="btn btn-outline-secondary mb-2 me-4">Редактировать</button>
-                    </a>
+
                 </td>
             </tr>
         @endforeach

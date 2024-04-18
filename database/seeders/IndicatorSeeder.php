@@ -15,7 +15,7 @@ class IndicatorSeeder extends Seeder
     public function run()
     {
         Indicator::create([
-            'name' => '1 показатель'
+            'name' => 'Lorem Ipsum'
         ]);
 
         Indicator::create([

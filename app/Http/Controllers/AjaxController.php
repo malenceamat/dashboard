@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Indicator;
+use App\Models\IndicatorProgram;
+use App\Models\Program;
+use App\Models\University;
+use ArielMejiaDev\LarapexCharts\AreaChart;
+use Illuminate\Http\Request;
+
+class AjaxController extends Controller
+{
+    public function get_table_with_ajax(Request $req)
+    {
+        $universities_data = University::get();
+        $data_indicators = [];
+        foreach ($universities_data as $university_data) {
+            $university_id = $university_data->id;
+
+            $programs = IndicatorProgram::where('indicator_id', $req->indicator)
+                ->join('programs', 'program_id', '=', 'id')
+                ->where('programs.id_university', '=', $university_id)
+                ->orderBy('date', 'desc')->first();
+
+            $data_indicator = array(
+                'name' => $university_data->name,
+                'description' => $programs->name ?? 0,
+                'fact' => $programs->fact ?? 0,
+                'plan' => $programs->plan ?? 0,
+                'percent' => $programs->percent ?? 0
+            );
+            $data_indicators[$university_id] = array_merge($data_indicator);
+        }
+        return view('users.elements.indicator-table', ['data_indicators' => $data_indicators]);
+    }
+
+    public function get_chart_with_ajax(Request $req)
+    {
+        $data_charts = IndicatorProgram::where('indicator_id', $req->indicator)
+            ->join('programs', 'program_id', '=', 'id')
+            ->where('programs.id_university', '=', $req->university_id)
+            ->orderBy('date')->get();
+
+        foreach ($data_charts as $data_chart) {
+            $universities_plan [] = $data_chart['plan'];
+            $universities_fact [] = $data_chart['fact'];
+            $date [] = $data_chart['date'];
+        }
+
+        $chart = (new AreaChart)
+            ->addData('Плановые значения', $universities_plan)
+            ->addData('Фактические значения', $universities_fact)
+            ->setXAxis($date);
+        $charts[$data_chart['id']] = $chart;
+
+
+        return view('users.elements.chart-table', ['data_charts' => $charts]);
+    }
+}

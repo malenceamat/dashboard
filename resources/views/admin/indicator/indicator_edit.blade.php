@@ -10,55 +10,31 @@
         }
     </style>
     <div class="row">
-        <div class="col-lg-6 col-12 ">
-            <form action="/indicator_update" method="POST">
+            <form action="/admin/indicator_update" method="POST">
                 @csrf
-                <div class="form-group">
-                    <p>Название показателя</p>
-                    <label for="t-text" class="visually-hidden">Text</label>
-                    <input type="hidden" name="id" value="{{$indicator['id']}}">
-                    <input id="t-text" type="text" name="name" placeholder="Название показателя" class="form-control"
+                <table style="width: 100%">
+                    <tr>
+                        <th>
+                        <label style="display: inline">Название показателя:</label>
+                        </th>
+                    <input  type="hidden" name="id" value="{{$indicator['id']}}">
+                        <th>
+                            <input  id="t-text" type="text" name="name" placeholder="Название показателя" class="form-control"
                            value="{{$indicator['name']}}" required>
+                        </th>
+                        <th class="text-center">
                     <input type="submit" class="mt-4 btn btn-primary" value="Обновить">
-                </div>
-                <br>
-                <select id="multipleSelect" multiple size="3" name="tables[]">
-                    @foreach($tables as $table)
-                        <option value="{{$table['id']}}" @if($indicator->tables->contains('id',$table->id)) selected @endif > {{$table['name']}} </option>
-                    @endforeach
-                </select>
+                        </th>
+                    </tr>
 
+                </table>
             </form>
         </div>
-    </div>
-
-
-    <script>selectBox3 = new vanillaSelectBox("#multipleSelect", {
-            "minWidth": 178,
-            "maxHeight": 200,
-            "search": true,
-            "stayOpen": true
-        });
-    </script>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="table-responsive">
+     <div class="table-responsive">
          <table class="table table-hover">
              <thead>
              <tr>
@@ -88,7 +64,7 @@
                  <td></td>
                  <td class="text-center">
                      <div class="action-btns">
-                         <a href="/program_create/{{$indicator['id']}}">
+                         <a href="/admin/program_create/{{$indicator['id']}}">
                              <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Добавить строку
                              </button>
                          </a>
@@ -111,12 +87,12 @@
                          style="border-right: 1px solid #000000;color: black">{{$program['percent']}}</td>
                      <td class="text-center">
                          <div class="action-btns">
-                             <form method="POST" action="/delete_column/{{$program['id']}}">
+                             <form method="POST" action="/admin/delete_column/{{$program['id']}}">
                                  @csrf
                                  {{method_field('DELETE')}}
                                  <button class="btn btn-danger mb-2 me-4">Удалить</button>
                              </form>
-                             <form method="get" action="/program_show/{{$program['id']}}">
+                             <form method="get" action="/admin/program_show/{{$program['id']}}">
                                  <button class="btn btn-outline-secondary mb-2 me-4" style="margin: 10px">Редактировать
                                  </button>
                                  <input type="hidden" value="{{$indicator['id']}}" name="id_indicator">
@@ -129,7 +105,7 @@
              @endforeach
              </tbody>
          </table>
-     </div>--}}
+     </div>
 @endsection
 <script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
 <script src={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")}}></script>

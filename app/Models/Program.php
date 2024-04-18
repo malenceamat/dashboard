@@ -11,7 +11,9 @@ class Program extends Model
 
     protected $table = 'programs';
 
-    protected $fillable = ['name','fact','plan','percent','result','id_university'];
+    protected $fillable = ['name','fact','plan','percent','result','id_university','date'];
+
+    protected $casts = ['date' => 'datetime:d/m/Y'];
 
     public function indicators()
     {

@@ -5,8 +5,9 @@
 @section('program_update')
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
+
     <div class="profile-image">
-        <form action="/program_update" method="post" enctype="multipart/form-data" id="save">
+        <form action="/admin/program_update" method="post" enctype="multipart/form-data" id="save">
             @csrf
             <div class="tab-content" id="animateLineContent-4">
                 <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"

@@ -3,8 +3,8 @@
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
     <div class="profile-image">
-        <form @if (isset($data->id)) action="{{url('dashboard-create/edit')}}"
-              @else action="{{url('dashboard-create/save')}}" @endif method="post"
+        <form @if (isset($data->id)) action="{{url('/admin/dashboard-create/edit')}}"
+              @else action="{{url('/admin/dashboard-create/save')}}" @endif method="post"
               enctype="multipart/form-data" id="save">
             @csrf
             @if($data->id)
@@ -34,6 +34,12 @@
                                                    placeholder="Фактические значения"
                                                    id="fact" name="fact"
                                                    value="{{$data['fact']}}">
+                                            <div class="container">
+                                                <br>
+                                                <button class="btn btn-rounded btn-light-success btn-lg">
+                                                    @if(isset($data->id))Редактировать@elseСоздать@endif
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" name="id" value="{{$data['id']}}">
@@ -65,18 +71,8 @@
                     </div>
                 </div>
             </div>
-            @if(isset($data->id))
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">
-                        Редактировать
-                    </button>
-                </div>
-            @else
-                <div class="container">
-                    <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать
-                    </button>
-                </div>
-            @endif
+
+
         </form>
     </div>
 

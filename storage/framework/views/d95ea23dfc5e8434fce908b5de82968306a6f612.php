@@ -4,9 +4,11 @@
 <?php $__env->startSection('program_update'); ?>
     <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
     <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
+
     <div class="profile-image">
-        <form action="/program_update" method="post" enctype="multipart/form-data" id="save">
+        <form action="/admin/program_update" method="post" enctype="multipart/form-data" id="save">
             <?php echo csrf_field(); ?>
+        </form>
             <div class="tab-content" id="animateLineContent-4">
                 <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
                      aria-labelledby="animated-underline-home-tab">
@@ -71,7 +73,7 @@
             <div class="container">
                 <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Обновить</button>
             </div>
-        </form>
+
     </div>
     <script>selectBox3 = new vanillaSelectBox("#multipleSelect", {
             "minWidth": 178,
