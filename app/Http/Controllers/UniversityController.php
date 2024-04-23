@@ -35,6 +35,6 @@ class UniversityController extends Controller
     {
         University::find($req->id)->update($req->all());
         University::find($req->id)->pokazateli()->sync($req->indicators);
-        return redirect('/universities');
+        return redirect(route('universities.index'));
     }
 }

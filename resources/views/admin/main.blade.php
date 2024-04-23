@@ -33,6 +33,8 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            </div>
+                            <br>
                         @endif
                         <div class="widget-content widget-content-area">
                             @yield('dashboard')

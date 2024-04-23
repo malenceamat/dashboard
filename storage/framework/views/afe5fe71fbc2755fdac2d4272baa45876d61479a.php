@@ -13,10 +13,9 @@
                 <div class="tab-pane fade show active" id="animated-underline-home" role="tabpanel"
                      aria-labelledby="animated-underline-home-tab">
                     <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
                             <div class="form">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md">
                                         <div class="form-group">
                                             <label for="fact">Фактическое значение</label>
                                             <input type="number" class="form-control mb-3"
@@ -37,13 +36,13 @@
                                         <div class="form-group">
                                             <label for="university">Институт</label>
                                         <select class="form-control mb-3" id="id_university" name="id_university">
-                                            <?php $__currentLoopData = $data->universityes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $programs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($programs['id']); ?>"><?php echo e($programs['name']); ?></option>
+                                            <?php $__currentLoopData = $universities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $university): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($university['id']); ?>"><?php echo e($university['name']); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md">
                                         <div id="basic" class="row layout-spacing layout-top-spacing">
                                             <div class="col-lg-12">
                                                 <div class="statbox widget box box-shadow">
@@ -55,9 +54,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="widget-content widget-content-area">
-                                                        <div id="editor-container">
+                                                        <div id="editor-container" style="height: 75%">
                                                             <label for="hiddenArea"></label>
-                                                            <textarea name="sub_name" style="display:none"
+                                                            <textarea name="name" style="display:none"
                                                                       id="hiddenArea"></textarea>
                                                         </div>
                                                     </div>
@@ -67,7 +66,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

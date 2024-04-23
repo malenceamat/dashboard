@@ -26,7 +26,7 @@
                         <form action="admin//indicator_create" method="POST">
                             <?php echo csrf_field(); ?>
                             <div class="form-group">
-                                <p>Название показателя</p>
+                                <h5>Название показателя</h5>
                                 <label for="t-text" class="visually-hidden">Text</label>
                                 <input id="t-text" type="text" name="name" placeholder="Название показателя"
                                        class="form-control" required>
@@ -70,9 +70,8 @@
                     </a>
                     <form style="display: inline-block" method="POST" action="/admin/indicator/<?php echo e($el['id']); ?>">
                         <?php echo csrf_field(); ?>
-                        <?php echo e(method_field('DELETE')); ?>
-
                         <button class="btn btn-light-danger">Удалить</button>
+                        <input type="hidden" name="indicator_id" value="<?php echo e($el['id']); ?>">
                     </form>
 
                 </td>

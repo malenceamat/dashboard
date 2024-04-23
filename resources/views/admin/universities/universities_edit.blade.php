@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css"
       href={{asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('universities_edit')
-    <form action="/admin/universities_update" method="POST">
+    <form action={{route('university.update')}} method="POST">
         <div class="row">
             <div class="col-lg-6 col-12 ">
                 @csrf

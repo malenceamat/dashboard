@@ -49,12 +49,34 @@ class AjaxController extends Controller
         }
 
         $chart = (new AreaChart)
-            ->addData('Плановые значения', $universities_plan)
             ->addData('Фактические значения', $universities_fact)
+            ->addData('Плановые значения', $universities_plan)
             ->setXAxis($date);
         $charts[$data_chart['id']] = $chart;
 
 
         return view('users.elements.chart-table', ['data_charts' => $charts]);
+    }
+    public function get_program_with_ajax(Request $req)
+    {
+        $data = IndicatorProgram::where('indicator_id', $req->id)
+            ->join('programs', 'program_id', '=', 'id')
+            ->where('programs.id_university', '=', $req->university_id)
+            ->where('programs.date', '=', $req->date)
+            ->get();
+
+        return view('admin.program.components.table', compact('data'));
+    }
+
+    public function update_fact_with_ajax(Request $req)
+    {
+        $plan = Program::where('id', $req->id)->value('plan');
+        $percent = round(($req->fact * 100) / $plan, 1);
+        Program::where('id', $req->id)->update([
+            'fact' => $req->fact,
+            'percent' => $percent,
+        ]);
+
+        return('Успешно обновлено');
     }
 }

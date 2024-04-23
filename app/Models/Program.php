@@ -13,7 +13,6 @@ class Program extends Model
 
     protected $fillable = ['name','fact','plan','percent','result','id_university','date'];
 
-    protected $casts = ['date' => 'datetime:d/m/Y'];
 
     public function indicators()
     {

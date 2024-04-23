@@ -27,7 +27,7 @@
                         <form action="admin//indicator_create" method="POST">
                             @csrf
                             <div class="form-group">
-                                <p>Название показателя</p>
+                                <h5>Название показателя</h5>
                                 <label for="t-text" class="visually-hidden">Text</label>
                                 <input id="t-text" type="text" name="name" placeholder="Название показателя"
                                        class="form-control" required>
@@ -71,8 +71,8 @@
                     </a>
                     <form style="display: inline-block" method="POST" action="/admin/indicator/{{$el['id']}}">
                         @csrf
-                        {{method_field('DELETE')}}
                         <button class="btn btn-light-danger">Удалить</button>
+                        <input type="hidden" name="indicator_id" value="{{$el['id']}}">
                     </form>
 
                 </td>

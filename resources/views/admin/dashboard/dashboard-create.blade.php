@@ -55,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="widget-content widget-content-area">
-                                                        <div id="editor-container">
+                                                        <div id="editor-container" style="height: 70%">
                                                             <label for="hiddenArea">{!! $data['name'] !!}</label>
                                                             <textarea name="name" style="display:none"
                                                                       id="hiddenArea"></textarea>

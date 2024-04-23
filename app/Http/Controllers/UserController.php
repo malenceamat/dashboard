@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $universities = University::get();
         $data = Dashboard::get();
-        $indicators = Indicator::get();
+        $indicators = Indicator::orderBy('id')->get();
 
         return view('users.general', ['data' => $data,
             'universities' => $universities, 'indicators' => $indicators]);
