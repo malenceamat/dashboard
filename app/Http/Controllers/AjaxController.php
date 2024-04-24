@@ -79,4 +79,13 @@ class AjaxController extends Controller
 
         return('Успешно обновлено');
     }
+
+    public function update_priority_with_ajax(Request $req)
+    {
+        Indicator::where('id', $req->id)->update([
+            'priority' => $req->priority,
+        ]);
+
+        return('Успешно обновлено');
+    }
 }

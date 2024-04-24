@@ -1,40 +1,5 @@
 @extends('admin.main')
-<link rel="stylesheet" type="text/css" href={{asset("src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
-<link rel="stylesheet" type="text/css"
-      href={{asset("src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('indicator_edit')
-    <style>
-        .sem {
-            white-space: pre-line !important;
-            word-wrap: break-word !important;
-        }
-    </style>
-    <div class="row">
-
-        <table style="width: 100%" class="table table-bordered">
-            <form action={{route('indicator.update')}} method="POST">
-                @csrf
-                <input type="hidden" name="id" value="{{$indicator['id']}}">
-                <thead>
-                <tr>
-                    <th style="width: 11%">
-                        Название показателя:
-                    </th>
-                    <th class="text-center">
-                        <input id="t-text" type="text" name="name" placeholder="Название показателя"
-                               class="form-control"
-                               value="{{$indicator['name']}}" required>
-                    </th>
-                    <th style="width: 11%" class="text-center">
-                        <input type="submit" class="btn btn-light-success" value="Обновить">
-                    </th>
-                </tr>
-                </thead>
-            </form>
-        </table>
-
-    </div>
-
 
 
     <div class="table-responsive">
@@ -114,6 +79,3 @@
 
     </div>
 @endsection
-<script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
-<script src={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")}}></script>
-<script src={{asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")}}></script>

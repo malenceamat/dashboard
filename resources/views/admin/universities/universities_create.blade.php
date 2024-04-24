@@ -7,7 +7,39 @@
     </style>
 
 
-
+    @foreach($university as $el)
+        <div class="modal fade" id="exampleModal-{{$el['id']}}-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Изменение института</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-12">
+                            <form action={{route('university.update')}} method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="t-text">Название института</label>
+                                    <input id="t-text" type="text" name="name" placeholder="Название показателя"
+                                           class="form-control" value="{{$el['name']}}" required>
+                                    <br>
+                                    <input type="submit" class="btn btn-light-success" value="Обновить">
+                                    <input type="hidden" name="id" value="{{$el['id']}}">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -64,12 +96,11 @@
             <tr>
                 <td class="text-center">{{$un['name']}}</td>
                 <td class="text-center">
-                    <a class="btn btn-light-warning" href="/admin/universities_update_show/{{$un->id}}">
-                        Редактировать
+                    <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{$un['id']}}-">
+                        <button class="btn btn-light-warning">Редактировать</button>
                     </a>
                     <form style="display: inline-block" method="POST" action="/admin/universities/{{$un->id}}">
                         @csrf
-                        {{method_field('DELETE')}}
                         <button class="btn btn-light-danger">Удалить</button>
                     </form>
             </tr>

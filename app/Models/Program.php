@@ -18,8 +18,5 @@ class Program extends Model
     {
         return $this->belongsToMany(Indicator::class,'indicator_program');
     }
-    public function universities_program()
-    {
-        return $this->belongsToMany(University::class,'program_university');
-    }
+
 }

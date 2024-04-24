@@ -15,7 +15,12 @@ class CreateIndicatorsTable extends Migration
     {
         Schema::create('indicators', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->longText('description')->nullable();
+//            $table->integer('plan')->nullable();
+//            $table->integer('fact')->nullable();
+//            $table->decimal('percent')->nullable();
+            $table->integer('priority')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

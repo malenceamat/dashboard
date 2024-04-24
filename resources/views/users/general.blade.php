@@ -25,7 +25,8 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th class="ps-0 text-center" scope="col"
+                            <th class="text-center">Название показателя</th>
+                            <th class="text-center" scope="col"
                             >Описание
                             </th>
                             <th class="text-center">
@@ -35,21 +36,19 @@
                             >Фактическое значение
                             </th>
                             <th class="text-center">
-                                % Выполенения
+                                Выполенено
                             </th>
                         </tr>
                         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $dashboard)
+                        @foreach($indicators as $indicator)
                             <tr>
-                                <td class="text-center sem">
-                                    {!! $dashboard['name'] !!}
-                                    <br>
-                                </td>
-                                <td class="text-center">{{$dashboard['plan']}}</td>
-                                <td class="text-center">{{$dashboard['fact']}}</td>
-                                <td class="text-center">{{$dashboard['percent']}} </td>
+                                <td class="text-center">{{$indicator['name']}}</td>
+                                <td class="text-center">{!!$indicator['description']!!}</td>
+                                <td class="text-center">{{$indicator['plan']}}</td>
+                                <td class="text-center">{{$indicator['fact']}}</td>
+                                <td class="text-center">{{$indicator['percent']}} %</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -72,22 +71,22 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <div class="table-responsive" id="indicator_table-{{$indicator->id}}">
+                    <div class="table-responsive" id="indicator_table-{{$indicator['id']}}">
                         {{--                @include('users.elements.indicator-table')--}}
                     </div>
                     <div>
                         <hr>
                         <div class="btn-group mb-2 me-4">
-                            <select class="btn btn-light dropdown-toggle" id="universities-{{$indicator->id}}">
+                            <select class="btn btn-light dropdown-toggle" id="universities-{{$indicator['id']}}">
                                 <option selected disabled>Институт</option>
                                 @foreach($universities as $university)
                                     <option id="{{$university->id}}"
-                                            onclick="changeChart(id = {{$university->id}}, indicator_id = {{$indicator->id}})">{{$university->name}}</option>
+                                            onclick="changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div id="chart_table-{{$indicator->id}}">
+                    <div id="chart_table-{{$indicator['id']}}">
                         {{--                                                @include('users.elements.chart-table')--}}
                     </div>
                 </div>
@@ -97,7 +96,7 @@
     <script>
         window.onload = () => {
             @foreach($indicators as $indicator)
-            loadTable({{$indicator->id}});
+            loadTable({{$indicator['id']}});
             @endforeach
 
         }

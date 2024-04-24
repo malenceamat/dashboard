@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DateRequest;
 use App\Models\Indicator;
-use App\Models\indicator_universities;
 use App\Models\IndicatorProgram;
+use App\Models\IndicatorUniversities;
 use App\Models\Program;
 use App\Models\University;
 use Illuminate\Http\Request;
@@ -22,24 +22,32 @@ class ProgramController extends Controller
 
     public function create(Request $req)
     {
-        $req_data = $req->all();
-        $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
-        $req_data['date'] = date('Y-m-d', strtotime($req->date));
+        $check =IndicatorProgram::where('indicator_id', $req->indicators_id)
+            ->join('programs', 'program_id', '=', 'id')
+            ->get('id_university');
 
-        $id = Program::create($req_data);
-        indicator_universities::create([
-            'indicator_id' => $req->indicators_id,
-            'university_id' => $req->id_university
-        ]);
-        IndicatorProgram::insert([
-            'indicator_id' => $req->indicators_id,
-            'program_id' => $id->id,
-        ]);
+        if ($check->where('id_university', '=', $req->id_university)->all()) {
+            return back()->withErrors(['unique' => 'Запись с таким университетом уже существует']);
+        } else {
+            $req_data = $req->all();
+            $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
+            $req_data['date'] = date('Y-m-d', strtotime($req->date));
 
-        return redirect('/admin/indicator_edit_show/' . $req->indicators_id);
+            $id = Program::create($req_data);
+            IndicatorProgram::insert(['indicator_id' => $req->indicators_id,
+                'program_id' => $id->id,]);
+
+            IndicatorUniversities::create([
+                'indicator_id' => $req->indicators_id,
+                'university_id' => $req->id_university
+            ]);
+
+            return redirect('/admin/indicator_edit_show/' . $req->indicators_id);
+        }
     }
 
-    public function show(Request $req, $id)
+    public
+    function show(Request $req, $id)
     {
         $dates = IndicatorProgram::where('indicator_id', $req->id_indicator)
             ->join('programs', 'program_id', '=', 'id')
@@ -48,13 +56,14 @@ class ProgramController extends Controller
         $data = $req->all();
 
 
-        $programs = Program::with('universities_program')->find($id);
+        $programs = Program::find($id);
 
 
         return view('admin.program.program_update', compact('programs', 'dates', 'data'));
     }
 
-    public function update(Request $req)
+    public
+    function update(Request $req)
     {
         $programs_ids = IndicatorProgram::where('indicator_id', $req->indicator_id)->get('program_id');
         foreach ($programs_ids as $program_id) {
@@ -74,7 +83,6 @@ class ProgramController extends Controller
 
     public function delete(Request $req)
     {
-
         $programs_ids = IndicatorProgram::where('indicator_id', $req->id_indicator)
             ->join('programs', 'program_id', '=', 'id')
             ->where('programs.id_university', '=', $req->university_id)->get('id');
@@ -82,12 +90,13 @@ class ProgramController extends Controller
             Program::where('id', $program_id->id)->delete();
             IndicatorProgram::where('program_id', $program_id->id)->delete();
         }
-        indicator_universities::where('indicator_id', $req->id_indicator)->where('university_id', $req->university_id)->delete();
+        IndicatorUniversities::where('indicator_id', $req->id_indicator)->where('university_id', $req->university_id)->delete();
 
         return back();
     }
 
-    public function date_create(DateRequest $req)
+    public
+    function date_create(DateRequest $req)
     {
         $programs_ids = IndicatorProgram::where('indicator_id', $req->indicator_id)
             ->join('programs', 'program_id', '=', 'id')
@@ -111,7 +120,8 @@ class ProgramController extends Controller
         }
     }
 
-    public function program_delete(Request $req)
+    public
+    function program_delete(Request $req)
     {
         Program::where('id', $req->program_id)->delete();
         IndicatorProgram::where('program_id', $req->program_id)->delete();

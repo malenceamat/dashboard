@@ -2,10 +2,7 @@
 <link rel="stylesheet" type="text/css"
       href=<?php echo e(asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")); ?>>
 <?php $__env->startSection('program_update'); ?>
-    <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
-    <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
-    <script src=<?php echo e(asset("https://npmcdn.com/flatpickr/dist/l10n/ru.js")); ?>></script>
-    <link href=<?php echo e(asset("../src/plugins/src/flatpickr/flatpickr_custom.css")); ?> rel="stylesheet" type="text/css">
+
 
     <style>
         .modal-content {
@@ -158,9 +155,6 @@
         });
     </script>
 <?php $__env->stopSection(); ?>
-<script src=<?php echo e(asset("../src/assets/js/scrollspyNav.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")); ?>></script>
 <script src=<?php echo e(asset("../src/plugins/src/flatpickr/flatpickr.js")); ?>></script>
 <script src=<?php echo e(asset("../src/plugins/src/flatpickr/custom-flatpickr.js")); ?>></script>
 <?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/program/program_update.blade.php ENDPATH**/ ?>

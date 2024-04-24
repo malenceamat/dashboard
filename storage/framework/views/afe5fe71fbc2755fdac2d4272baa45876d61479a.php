@@ -1,7 +1,3 @@
-<link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")); ?>>
-<link rel="stylesheet" type="text/css"
-      href=<?php echo e(asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")); ?>>
-
 <?php $__env->startSection('program_create'); ?>
     <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
     <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
@@ -101,9 +97,6 @@
         });
     </script>
 <?php $__env->stopSection(); ?>
-<script src=<?php echo e(asset("../src/assets/js/scrollspyNav.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")); ?>></script>
 <script src=<?php echo e(asset("../src/plugins/src/flatpickr/flatpickr.js")); ?>></script>
 <script src=<?php echo e(asset("../src/plugins/src/flatpickr/custom-flatpickr.js")); ?>></script>
 <?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/program/program_create.blade.php ENDPATH**/ ?>

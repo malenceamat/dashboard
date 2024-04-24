@@ -1,39 +1,4 @@
-<link rel="stylesheet" type="text/css" href=<?php echo e(asset("src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")); ?>>
-<link rel="stylesheet" type="text/css"
-      href=<?php echo e(asset("src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")); ?>>
 <?php $__env->startSection('indicator_edit'); ?>
-    <style>
-        .sem {
-            white-space: pre-line !important;
-            word-wrap: break-word !important;
-        }
-    </style>
-    <div class="row">
-
-        <table style="width: 100%" class="table table-bordered">
-            <form action=<?php echo e(route('indicator.update')); ?> method="POST">
-                <?php echo csrf_field(); ?>
-                <input type="hidden" name="id" value="<?php echo e($indicator['id']); ?>">
-                <thead>
-                <tr>
-                    <th style="width: 11%">
-                        Название показателя:
-                    </th>
-                    <th class="text-center">
-                        <input id="t-text" type="text" name="name" placeholder="Название показателя"
-                               class="form-control"
-                               value="<?php echo e($indicator['name']); ?>" required>
-                    </th>
-                    <th style="width: 11%" class="text-center">
-                        <input type="submit" class="btn btn-light-success" value="Обновить">
-                    </th>
-                </tr>
-                </thead>
-            </form>
-        </table>
-
-    </div>
-
 
 
     <div class="table-responsive">
@@ -113,7 +78,4 @@
 
     </div>
 <?php $__env->stopSection(); ?>
-<script src=<?php echo e(asset("../src/assets/js/scrollspyNav.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")); ?>></script>
-<script src=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")); ?>></script>
 <?php echo $__env->make('admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/admin/indicator/indicator_edit.blade.php ENDPATH**/ ?>

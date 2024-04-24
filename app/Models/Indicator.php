@@ -11,7 +11,7 @@ class Indicator extends Model
 
     protected $table = 'indicators';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description', 'plan', 'fact', 'percent'];
 
     public function programs()
     {
@@ -20,9 +20,5 @@ class Indicator extends Model
     public function universityes()
     {
         return $this->belongsToMany(University::class,'indicator_universities');
-    }
-    public function tables()
-    {
-        return$this->belongsToMany(TableCategory::class,'indicator_table_category');
     }
 }

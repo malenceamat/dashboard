@@ -3,20 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Indicator;
-use App\Models\indicator_universities;
 use App\Models\IndicatorProgram;
+use App\Models\IndicatorUniversities;
 use App\Models\Program;
-use App\Models\TableCategory;
-use App\Models\University;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Validation\Rules\In;
 
 class IndicatorController extends Controller
 {
     public function index()
     {
-        $data = Indicator::with('tables')->get();
+        $data = Indicator::get();
         return view('admin.indicator.indicator_create', compact('data'));
     }
 
@@ -33,9 +29,9 @@ class IndicatorController extends Controller
         foreach ($ids as $id) {
             Program::where('id', $id->program_id)->delete();
         }
-        indicator_universities::where('indicator_id', $req->indicator_id)->delete();
         IndicatorProgram::where('indicator_id', $req->indicator_id)->delete();
         Indicator::where('id', $req->indicator_id)->delete();
+        IndicatorUniversities::where('indicator_id', $req->indicator_id)->delete();
 
         return back();
     }
@@ -43,6 +39,7 @@ class IndicatorController extends Controller
     public function edit_show($id)
     {
         $indicator = Indicator::with(['programs', 'universityes'])->find($id);
+
         $universities = $indicator->universityes;
         $data = [];
         foreach ($universities as $university) {
@@ -61,19 +58,28 @@ class IndicatorController extends Controller
             $data [$university->id] = array_merge($program);
         }
         $collection = collect($data);
+
         $totals = [
             'total_plan' => $collection->sum('plan'),
             'total_fact' => $collection->sum('fact'),
             'total_percent' => round($collection->avg('percent'), 2),
         ];
+//
+//        Indicator::where('id', $id)->update([
+//           'plan' => $collection->sum('plan'),
+//            'fact' => $collection->sum('fact'),
+//            'percent' => round($collection->avg('percent'), 2),
+//        ]);
 
         return view('admin.indicator.indicator_edit', compact('indicator', 'data', 'totals'));
     }
 
     public function update(Request $req)
     {
-        Indicator::find($req->id)->update($req->all());
-        Indicator::find($req->id)->tables()->sync($req->tables);
+        Indicator::where('id' ,$req->id)->update([
+            'name' => $req->name,
+            'description' => $req->description
+        ]);
         return back();
     }
 }

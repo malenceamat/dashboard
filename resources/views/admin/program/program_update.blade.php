@@ -3,10 +3,7 @@
 <link rel="stylesheet" type="text/css"
       href={{asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('program_update')
-    <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
-    <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
-    <script src={{asset("https://npmcdn.com/flatpickr/dist/l10n/ru.js") }}></script>
-    <link href={{asset("../src/plugins/src/flatpickr/flatpickr_custom.css")}} rel="stylesheet" type="text/css">
+
 
     <style>
         .modal-content {
@@ -159,8 +156,5 @@
         });
     </script>
 @endsection
-<script src={{asset("../src/assets/js/scrollspyNav.js")}}></script>
-<script src={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.js")}}></script>
-<script src={{asset("../src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js")}}></script>
 <script src={{asset("../src/plugins/src/flatpickr/flatpickr.js")}}></script>
 <script src={{asset("../src/plugins/src/flatpickr/custom-flatpickr.js")}}></script>

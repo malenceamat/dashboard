@@ -15,15 +15,21 @@ class IndicatorSeeder extends Seeder
     public function run()
     {
         Indicator::create([
-            'name' => 'Lorem Ipsum'
+            'name' => 'Пример: Количество студентов',
+            'description' => 'Количество студентов на данный момент в университете',
+            'priority' => '1',
         ]);
 
         Indicator::create([
-            'name' => '2 показатель'
+            'name' => 'Пример: Средний балл',
+            'description' => 'Средний балл всех университетов в университете',
+            'priority' => '2',
         ]);
 
         Indicator::create([
-            'name' => '3 показатель'
+            'name' => 'Пример: Количество абитуриентов',
+            'description' => 'Количество абитуриентов подавших заявки',
+            'priority' => '3',
         ]);
     }
 }

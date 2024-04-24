@@ -15,11 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            DashboardSeeder::class,
             UniversitySeeder::class,
             IndicatorSeeder::class,
             Indicator_UniversitySeeder::class,
-            TableCategorySeeder::class
+            IndicatorProgramSeeder::class,
+            ProgramsSeeder::class,
+
         ]);
     }
 }

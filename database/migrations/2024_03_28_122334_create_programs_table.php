@@ -21,7 +21,6 @@ class CreateProgramsTable extends Migration
             $table->integer('plan')->nullable();
             $table->decimal('percent')->nullable();
             $table->date('date')->nullable();
-            $table->decimal('result')->nullable();
             $table->timestamps();
         });
     }
