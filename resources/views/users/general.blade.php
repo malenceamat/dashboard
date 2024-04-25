@@ -45,7 +45,7 @@
                         @foreach($indicators as $indicator)
                             <tr>
                                 <td class="text-center">{{$indicator['name']}}</td>
-                                <td class="text-center">{!!$indicator['description']!!}</td>
+                                <td class="text-center sem">{!!$indicator['description']!!}</td>
                                 <td class="text-center">{{$indicator['plan']}}</td>
                                 <td class="text-center">{{$indicator['fact']}}</td>
                                 <td class="text-center">{{$indicator['percent']}} %</td>
@@ -76,14 +76,21 @@
                     </div>
                     <div>
                         <hr>
-                        <div class="btn-group mb-2 me-4">
-                            <select class="btn btn-light dropdown-toggle" id="universities-{{$indicator['id']}}">
-                                <option selected disabled>Институт</option>
+                        <div class="btn-group mb-2 me-4" role="group">
+                            <button id="btndefault" type="button" class="btn btn-light dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Институт
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-chevron-down">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btndefault">
                                 @foreach($universities as $university)
-                                    <option id="{{$university->id}}"
-                                            onclick="changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</option>
+                                    <a id="{{$university->id}}" class="dropdown-item"
+                                       href="javascript:changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</a>
                                 @endforeach
-                            </select>
+                            </div>
                         </div>
                     </div>
                     <div id="chart_table-{{$indicator['id']}}">

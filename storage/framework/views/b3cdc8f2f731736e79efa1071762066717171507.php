@@ -40,8 +40,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <h2>Sign In</h2>
-                                <p>Enter your email and password to login</p>
+                                <p>Введите ваш email и пароль</p>
                             </div>
                             <!-- Session Status -->
                             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
@@ -84,7 +83,7 @@
 
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
+                                        <label for="password" class="form-label">Пароль</label>
                                         <input type="password" class="form-control" id="password" name="password"
                                                required autocomplete="current-password">
                                     </div>
@@ -97,7 +96,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['class' => 'ml-3','style' => 'color: black!important;']); ?>
-                                        <?php echo e(__('Log in')); ?>
+                                        <?php echo e(__('Войти')); ?>
 
                                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

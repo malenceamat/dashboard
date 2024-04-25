@@ -43,12 +43,14 @@ class AjaxController extends Controller
             ->orderBy('date')->get();
 
         foreach ($data_charts as $data_chart) {
+            $universities_name  = University::where('id', $data_chart->id_university)->value('name');
             $universities_plan [] = $data_chart['plan'];
             $universities_fact [] = $data_chart['fact'];
             $date [] = $data_chart['date'];
         }
 
         $chart = (new AreaChart)
+            ->setTitle($universities_name)
             ->addData('Фактические значения', $universities_fact)
             ->addData('Плановые значения', $universities_plan)
             ->setXAxis($date);

@@ -16,6 +16,7 @@ class IndicatorController extends Controller
         return view('admin.indicator.indicator_create', compact('data'));
     }
 
+
     public function create(Request $req)
     {
         Indicator::create($req->all());

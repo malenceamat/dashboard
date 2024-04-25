@@ -6,6 +6,10 @@
         }
     </style>
 
+    <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Добавить институт
+    </button>
+    <br><br>
 
     @foreach($university as $el)
         <div class="modal fade" id="exampleModal-{{$el['id']}}-" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -72,22 +76,13 @@
             </div>
         </div>
     </div>
+
+
     <table id="zero-config" class="table table-bordered" style="width:100%">
         <thead>
         <tr>
             <th class="text-center">Институты</th>
-            <th class="text-center">
-                <div style="display: inline-block">
-                    <div class="text-center" style="text-align: center">
-                        Действия
-                    </div>
-                </div>
-                <div class="text-center" style="float:right; display: inline-block">
-                    <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Добавить институт
-                    </button>
-                </div>
-            </th>
+            <th class="text-center">Действия</th>
         </tr>
         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
         </thead>

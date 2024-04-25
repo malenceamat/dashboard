@@ -40,8 +40,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <h2>Sign In</h2>
-                                <p>Enter your email and password to login</p>
+                                <p>Введите ваш email и пароль</p>
                             </div>
                             <!-- Session Status -->
                             <x-auth-session-status class="mb-4" :status="session('status')"/>
@@ -62,7 +61,7 @@
 
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
+                                        <label for="password" class="form-label">Пароль</label>
                                         <input type="password" class="form-control" id="password" name="password"
                                                required autocomplete="current-password">
                                     </div>
@@ -70,7 +69,7 @@
 
                                 <div class="flex items-center justify-end mt-4">
                                     <x-button class="ml-3" style="color: black!important;">
-                                        {{ __('Log in') }}
+                                        {{ __('Войти') }}
                                     </x-button>
                                 </div>
                             </form>

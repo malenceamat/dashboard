@@ -1,4 +1,8 @@
 @extends('admin.main')
+<link rel="stylesheet" type="text/css" href={{asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
+<link rel="stylesheet" type="text/css"
+      href={{asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
+
 @section('program_create')
     <link rel="stylesheet" type="text/css" href={{asset("../src/plugins/css/light/editors/quill/quill.snow.css")}}>
     <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")}}></script>
@@ -75,6 +79,7 @@
     <script>
         flatpickr(document.getElementById('date'), {
             dateFormat: "d-m-Y",
+            "locale": "ru",
         });
 
     </script>

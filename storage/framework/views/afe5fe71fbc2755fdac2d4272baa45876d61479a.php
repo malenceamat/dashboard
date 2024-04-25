@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")); ?>>
+<link rel="stylesheet" type="text/css"
+      href=<?php echo e(asset("../src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")); ?>>
+
 <?php $__env->startSection('program_create'); ?>
     <link rel="stylesheet" type="text/css" href=<?php echo e(asset("../src/plugins/css/light/editors/quill/quill.snow.css")); ?>>
     <script src=<?php echo e(asset("https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")); ?>></script>
@@ -74,6 +78,7 @@
     <script>
         flatpickr(document.getElementById('date'), {
             dateFormat: "d-m-Y",
+            "locale": "ru",
         });
 
     </script>
