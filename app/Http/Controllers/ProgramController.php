@@ -31,7 +31,7 @@ class ProgramController extends Controller
         } else {
             $req_data = $req->all();
             if ($req->plan == 0) {
-                $req_data['percent'] = 0.00;
+            $req_data['percent'] = 0.00;
             } else {
                 $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
             }
@@ -78,7 +78,11 @@ class ProgramController extends Controller
                 'plan' => $req->plan,
                 'name' => $req->name,
             ]);
-            $program->update(['percent' => round(($program->value('fact') * 100) / $req->plan, 1)]);
+            if ($req->plan == 0) {
+                $program->update(['percent' => 0.00]);
+            } else {
+                $program->update(['percent' => round(($req->fact * 100) / $req->plan, 1)]);
+            }
 
         }
 
