@@ -37,7 +37,7 @@ class UserController extends Controller
                 'description' => $indicator->description,
                 'fact' => $collection->sum('fact'),
                 'plan' => $collection->sum('plan'),
-                'percent' => round($collection->avg('percent'), 2),
+                'percent' => round(($collection->sum('fact') * 100) / $collection->sum('plan'), 2),
             ];
             $data [$indicator->id] = array_merge($total);
         }
