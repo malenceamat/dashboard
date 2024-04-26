@@ -30,7 +30,11 @@ class ProgramController extends Controller
             return back()->withErrors(['unique' => 'Запись с таким университетом уже существует']);
         } else {
             $req_data = $req->all();
-            $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
+            if ($req->plan == 0) {
+                $req_data['percent'] = 0.00;
+            } else {
+                $req_data['percent'] = round(($req->fact * 100) / $req->plan, 1);
+            }
             $req_data['date'] = date('Y-m-d', strtotime($req->date));
 
             $id = Program::create($req_data);
