@@ -1,7 +1,17 @@
 @extends('admin.main')
 @section('indicator_edit')
+    <style>
+        .sem {
+            white-space: pre-line !important;
+            word-wrap: break-word !important;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 
-
+    <div class="col-lg-12 col-12">
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
@@ -33,15 +43,14 @@
             </thead>
             <tbody>
                 @foreach($data as $el)
-                    <tr>
+                    <tr style="word-break: break-all">
                         <td class="text-center">{{$el['university_name']}}</td>
-                        <td class="text-center sem">{!! $el['description'] !!}</td>
+                        <td class="text-center sem image" >{!! $el['description'] !!}</td>
                         <td class="text-center">{{$el['plan']}}</td>
                         <td class="text-center">{{$el['fact']}}</td>
                         <td class="text-center">{{$el['percent']}} %</td>
                         <td class="text-center">{{$el['date']}}</td>
-                        <td class="text-center">
-                            <div class="action-btns">
+                        <td class="text-center" style="width: 20%;">
                                 <form style="display: inline" method="get"
                                       action="/dashboard/admin/program_show/{{$el['indicator_id']}}">
                                     <button class="btn btn-light-warning">Редактировать
@@ -56,7 +65,6 @@
                                     <input type="hidden" value="{{$el['id']}}" name="id_indicator">
                                     <input type="hidden" value="{{$el['university_id']}}" name="university_id">
                                 </form>
-                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -76,6 +84,6 @@
                 </thead>
 
         </table>
-
+    </div>
     </div>
 @endsection

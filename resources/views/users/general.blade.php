@@ -22,7 +22,7 @@
             </div>
             <div class="widget-content widget-content-area">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" >
                         <thead>
                         <tr>
                             <th class="text-center">Название показателя</th>
@@ -43,9 +43,9 @@
                         </thead>
                         <tbody>
                         @foreach($indicators as $indicator)
-                            <tr>
+                            <tr style="word-break: break-all">
                                 <td class="text-center">{{$indicator['name']}}</td>
-                                <td class="text-center sem">{!!$indicator['description']!!}</td>
+                                <td class="text-center sem" >{!!$indicator['description']!!}</td>
                                 <td class="text-center">{{$indicator['plan']}}</td>
                                 <td class="text-center">{{$indicator['fact']}}</td>
                                 <td class="text-center">{{$indicator['percent']}} %</td>

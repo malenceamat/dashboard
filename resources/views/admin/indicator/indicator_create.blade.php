@@ -5,8 +5,15 @@
         .modal-content {
             background-color: white;
         }
+        .sem {
+            white-space: pre-line !important;
+            word-wrap: break-word !important;
+        }
+        .image img{
+            width: 100%;
+            height: 100%;
+        }
     </style>
-
 
     <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Добавить показатель
@@ -104,13 +111,14 @@
     @endforeach
 
 
+    <div class="col-lg-12 col-12">
+    <div class="table-responsive">
 
-
-    <table class="table table-bordered" style="width:100%">
+    <table class="table table-bordered" >
         <thead>
         <tr>
             <th class="text-center">Название</th>
-            <th class="text-center">Описание</th>
+            <th class="text-center" >Описание</th>
             <th class="text-center">Действия</th>
             <th class="text-center">Порядок отображения</th>
         </tr>
@@ -118,22 +126,21 @@
         </thead>
         <tbody>
         @foreach($data as $el)
-            <tr>
+            <tr style="word-break: break-all">
                 <td class="text-center">{{$el['name']}}</td>
-                <td class="text-center sem">{!!$el['description']!!}</td>
-                <td class="text-center">
-                    <a href="/dashboard/admin/indicator_edit_show/{{$el['id']}}">
-                        <button class="btn btn-light-primary">Открыть</button>
+                <td class="text-center sem image">{!!$el['description']!!}</td>
+                <td class="text-center" style="width: 30%;">
+                    <a  class="btn btn-light-primary" href="/dashboard/admin/indicator_edit_show/{{$el['id']}}">
+                       Открыть
                     </a>
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal-{{$el['id']}}-">
-                        <button class="btn btn-light-warning">Редактировать</button>
+                    <a class="btn btn-light-warning" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$el['id']}}-">
+                       Редактировать
                     </a>
-                    <form style="display: inline-block" method="POST" action="/dashboard/admin/indicator/{{$el['id']}}">
+                    <form style="display: inline" method="POST" action="/dashboard/admin/indicator/{{$el['id']}}">
                         @csrf
                         <button class="btn btn-light-danger">Удалить</button>
-                        <input id="{{$el['id']}}" type="hidden" value="{{$el['id']}}" name="indicator_id">
+                        <input style="width: 0%;" id="{{$el['id']}}" type="hidden" value="{{$el['id']}}" name="indicator_id">
                     </form>
-
                 </td>
                 <td style="width: 10%;">
                     <input onchange="changePriority({{$el->id}})" type="number" class="form-control"
@@ -144,6 +151,8 @@
         @endforeach
         </tbody>
     </table>
+    </div>
+    </div>
     <script src={{asset("dashboard/public/src/plugins/src/editors/quill/quill.js")}}></script>
 
     <script>

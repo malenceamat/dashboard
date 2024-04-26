@@ -1,7 +1,7 @@
- <table class="table table-bordered" >
+ <table class="table table-bordered">
             <thead>
             <tr>
-                <th class="ps-0 text-center" scope="col"
+                <th class="text-center" scope="col"
                 >Институт
                 </th>
                 <th class="text-center">
@@ -22,11 +22,11 @@
             </thead>
             <tbody>
 @foreach($data_indicators as $el)
-            <tr>
-                <td class="text-center sem"
+            <tr style="word-break: break-all">
+                <td class="text-center"
                 >{{ $el['name'] }}
                 </td>
-                <td class="text-center sem"
+                <td class="text-center sem "
                 >{!!$el['description']!!}
                 </td>
                 <td class="text-center"
