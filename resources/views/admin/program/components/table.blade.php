@@ -17,6 +17,7 @@
         </div>
         <input type="hidden" name="program_id" value="{{$el->id}}">
         <input type="hidden" name="indicator_id" value="{{$data['id_indicator']}}">
+        <input type="hidden" name="university_id" value="{{$data['university_id']}}">
     </form>
     <hr>
 @endforeach

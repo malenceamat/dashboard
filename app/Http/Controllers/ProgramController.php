@@ -125,6 +125,6 @@ class ProgramController extends Controller
     {
         Program::where('id', $req->program_id)->delete();
         IndicatorProgram::where('program_id', $req->program_id)->delete();
-        return back();
+        return redirect()->action([IndicatorController::class, "edit_show"], [$req->indicator_id]);
     }
 }
