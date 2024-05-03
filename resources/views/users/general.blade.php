@@ -46,7 +46,7 @@
                             <tr style="word-break: break-all">
                                 <td class="text-center">{{$indicator['name']}}</td>
                                 <td class="text-center sem" >{!!$indicator['description']!!}</td>
-                                <td class="text-center">{{$indicator['plan']}}</td>
+                                <td class="text-center">{{$indicator['planned']}}</td>
                                 <td class="text-center">{{$indicator['fact']}}</td>
                                 <td class="text-center">{{$indicator['percent']}} %</td>
                             </tr>
@@ -75,23 +75,23 @@
                         {{--                @include('users.elements.indicator-table')--}}
                     </div>
                     <div>
-                        <hr>
-                        <div class="btn-group mb-2 me-4" role="group">
-                            <button id="btndefault" type="button" class="btn btn-light dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Институт
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-chevron-down">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="btndefault">
-                                @foreach($universities as $university)
-                                    <a id="{{$university->id}}" class="dropdown-item"
-                                       href="javascript:changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</a>
-                                @endforeach
-                            </div>
-                        </div>
+{{--                        <hr>--}}
+{{--                        <div class="btn-group mb-2 me-4" role="group">--}}
+{{--                            <button id="btndefault" type="button" class="btn btn-light dropdown-toggle"--}}
+{{--                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Институт--}}
+{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"--}}
+{{--                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--                                     stroke-linejoin="round" class="feather feather-chevron-down">--}}
+{{--                                    <polyline points="6 9 12 15 18 9"></polyline>--}}
+{{--                                </svg>--}}
+{{--                            </button>--}}
+{{--                            <div class="dropdown-menu" aria-labelledby="btndefault">--}}
+{{--                                @foreach($universities as $university)--}}
+{{--                                    <a id="{{$university->id}}" class="dropdown-item"--}}
+{{--                                       href="javascript:changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</a>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <div id="chart_table-{{$indicator['id']}}">
                         {{--                                                @include('users.elements.chart-table')--}}
@@ -104,6 +104,7 @@
         window.onload = () => {
             @foreach($indicators as $indicator)
             loadTable({{$indicator['id']}});
+            changeChart({{$indicator['id']}});
             @endforeach
 
         }
@@ -130,11 +131,10 @@
                     type: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
-                        university_id: id,
-                        indicator: indicator_id,
+                        indicator: id,
                     },
                     success: function (data) {
-                        $('#chart_table-' + indicator_id).html(data);
+                        $('#chart_table-' + id).html(data);
 
                     },
                 }

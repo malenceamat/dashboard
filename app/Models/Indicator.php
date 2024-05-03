@@ -11,7 +11,7 @@ class Indicator extends Model
 
     protected $table = 'indicators';
 
-    protected $fillable = ['name', 'description', 'plan', 'fact', 'percent'];
+    protected $fillable = ['name', 'description', 'plan', 'fact', 'percent', 'planned'];
 
     public function programs()
     {

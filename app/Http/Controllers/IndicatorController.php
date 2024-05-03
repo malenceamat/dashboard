@@ -19,7 +19,11 @@ class IndicatorController extends Controller
 
     public function create(Request $req)
     {
-        Indicator::create($req->all());
+        Indicator::create([
+            'description' => $req->description,
+            'planned' => $req->planned,
+            'name' => $req->name,
+        ]);
 
         return back();
     }
@@ -59,11 +63,10 @@ class IndicatorController extends Controller
             $data [$university->id] = array_merge($program);
         }
         $collection = collect($data);
-
         $totals = [
             'total_plan' => $collection->sum('plan'),
             'total_fact' => $collection->sum('fact'),
-            'total_percent' => round(($collection->sum('fact') * 100) / $collection->sum('plan'), 2),
+            'total_percent' => round(($collection->sum('fact') * 100) / $indicator->planned, 2),
         ];
 
         return view('admin.indicator.indicator_edit', compact('indicator', 'data', 'totals'));
@@ -73,7 +76,8 @@ class IndicatorController extends Controller
     {
         Indicator::where('id' ,$req->id)->update([
             'name' => $req->name,
-            'description' => $req->description
+            'description' => $req->description,
+            'planned' => $req->planned
         ]);
         return back();
     }

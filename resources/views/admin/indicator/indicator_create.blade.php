@@ -41,7 +41,10 @@
                                 <input id="t-text" type="text" name="name" placeholder="Название показателя"
                                        class="form-control" required>
                                 <br>
-
+                                <label for="p-text">Плановое значение</label>
+                                <input id="p-text" type="number" name="planned" placeholder="Плановое значение"
+                                       class="form-control" required>
+                                <br>
                                 <div class="row">
                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                         <h6> Описание </h6>
@@ -87,6 +90,10 @@
                                     <label for="t-text">Название показателя</label>
                                     <input id="t-text" type="text" name="name" placeholder="Название показателя"
                                            class="form-control" value="{{$el['name']}}" required>
+                                    <br>
+                                    <label for="p-text">Плановое значение</label>
+                                    <input id="p-text" type="number" name="planned" placeholder="Плановое значение"
+                                           class="form-control" value="{{$el['planned']}}" required>
                                     <br>
                                     <div class="row">
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">

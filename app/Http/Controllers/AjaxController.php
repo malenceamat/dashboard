@@ -6,7 +6,7 @@ use App\Models\Indicator;
 use App\Models\IndicatorProgram;
 use App\Models\Program;
 use App\Models\University;
-use ArielMejiaDev\LarapexCharts\AreaChart;
+use ArielMejiaDev\LarapexCharts\BarChart;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -37,23 +37,35 @@ class AjaxController extends Controller
 
     public function get_chart_with_ajax(Request $req)
     {
+        $universities_data = University::get();
+        foreach ($universities_data as $university_data) {
+
+
         $data_charts = IndicatorProgram::where('indicator_id', $req->indicator)
             ->join('programs', 'program_id', '=', 'id')
-            ->where('programs.id_university', '=', $req->university_id)
-            ->orderBy('date')->get();
+            ->where('programs.id_university', '=', $university_data->id)
+            ->orderBy('date', 'desc')->get();
 
         foreach ($data_charts as $data_chart) {
-            $universities_name  = University::where('id', $data_chart->id_university)->value('name');
-            $universities_plan [] = $data_chart['plan'];
-            $universities_fact [] = $data_chart['fact'];
-            $date [] = $data_chart['date'];
+            $universities_name [] = University::where('id', $university_data->id)->value('name');
+            $universities_plans [] = 100;
+
+            if($data_chart['plan'] == 0) {
+                $plan = 1;
+            }
+            else {
+                $plan = $data_chart['plan'];
+            }
+
+            $universities_facts [] = round(($data_chart['fact'] * 100) / $plan , 2);
         }
 
-        $chart = (new AreaChart)
-            ->setTitle($universities_name)
-            ->addData('Фактические значения', $universities_fact)
-            ->addData('Плановые значения', $universities_plan)
-            ->setXAxis($date);
+
+        }
+        $chart = (new BarChart())
+            ->addData('Фактические значения %', $universities_facts)
+            ->addData('Плановые значения %', $universities_plans)
+            ->setXAxis($universities_name);
         $charts[$data_chart['id']] = $chart;
 
 

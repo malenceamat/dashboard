@@ -36,8 +36,9 @@ class UserController extends Controller
                 'name' => $indicator->name,
                 'description' => $indicator->description,
                 'fact' => $collection->sum('fact'),
-                'plan' => $collection->sum('plan'),
-                'percent' => round(($collection->sum('fact') * 100) / $collection->sum('plan'), 2),
+                'plan' => $indicator->plan,
+                'planned' => $indicator->planned,
+                'percent' => round(($collection->sum('fact') * 100) / $indicator->planned, 2),
             ];
             $data [$indicator->id] = array_merge($total);
         }

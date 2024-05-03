@@ -11,6 +11,8 @@
         }
     </style>
 
+    <h1 class="text-center">{{$indicator['name']}}</h1>
+
     <div class="col-lg-12 col-12">
     <div class="table-responsive">
         <table class="table table-bordered">
