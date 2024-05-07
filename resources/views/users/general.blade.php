@@ -74,25 +74,6 @@
                     <div class="table-responsive" id="indicator_table-{{$indicator['id']}}">
                         {{--                @include('users.elements.indicator-table')--}}
                     </div>
-                    <div>
-{{--                        <hr>--}}
-{{--                        <div class="btn-group mb-2 me-4" role="group">--}}
-{{--                            <button id="btndefault" type="button" class="btn btn-light dropdown-toggle"--}}
-{{--                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Институт--}}
-{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"--}}
-{{--                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
-{{--                                     stroke-linejoin="round" class="feather feather-chevron-down">--}}
-{{--                                    <polyline points="6 9 12 15 18 9"></polyline>--}}
-{{--                                </svg>--}}
-{{--                            </button>--}}
-{{--                            <div class="dropdown-menu" aria-labelledby="btndefault">--}}
-{{--                                @foreach($universities as $university)--}}
-{{--                                    <a id="{{$university->id}}" class="dropdown-item"--}}
-{{--                                       href="javascript:changeChart(id = {{$university->id}}, indicator_id = {{$indicator['id']}})">{{$university->name}}</a>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                    </div>
                     <div id="chart_table-{{$indicator['id']}}">
                         {{--                                                @include('users.elements.chart-table')--}}
                     </div>
@@ -142,5 +123,6 @@
         }
 
     </script>
+    <script src="{{asset('https://cdn.jsdelivr.net/npm/chart.js')}}"></script>
 
 @endsection

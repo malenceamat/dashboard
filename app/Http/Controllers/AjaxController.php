@@ -6,6 +6,7 @@ use App\Models\Indicator;
 use App\Models\IndicatorProgram;
 use App\Models\Program;
 use App\Models\University;
+use ArielMejiaDev\LarapexCharts\AreaChart;
 use ArielMejiaDev\LarapexCharts\BarChart;
 use Illuminate\Http\Request;
 
@@ -41,36 +42,39 @@ class AjaxController extends Controller
         foreach ($universities_data as $university_data) {
 
 
-        $data_charts = IndicatorProgram::where('indicator_id', $req->indicator)
-            ->join('programs', 'program_id', '=', 'id')
-            ->where('programs.id_university', '=', $university_data->id)
-            ->orderBy('date', 'desc')->get();
+            $data_charts = IndicatorProgram::where('indicator_id', $req->indicator)
+                ->join('programs', 'program_id', '=', 'id')
+                ->where('programs.id_university', '=', $university_data->id)
+                ->orderBy('date', 'desc')->get();
 
-        foreach ($data_charts as $data_chart) {
-            $universities_name [] = University::where('id', $university_data->id)->value('name');
-            $universities_plans [] = 100;
+            foreach ($data_charts as $data_chart) {
+                $universities_name [] = University::where('id', $university_data->id)->value('name');
+                $universities_plans [] = 100;
 
-            if($data_chart['plan'] == 0) {
-                $plan = 1;
+                if ($data_chart['plan'] == 0) {
+                    $plan = 1;
+                    $hounred = 1;
+                } else {
+                    $plan = $data_chart['plan'];
+                    $hounred = 100;
+                }
+
+                $universities_facts [] = round(($data_chart['fact'] * $hounred) / $plan, 2);
             }
-            else {
-                $plan = $data_chart['plan'];
-            }
-
-            $universities_facts [] = round(($data_chart['fact'] * 100) / $plan , 2);
-        }
 
 
         }
-        $chart = (new BarChart())
-            ->addData('Фактические значения %', $universities_facts)
-            ->addData('Плановые значения %', $universities_plans)
-            ->setXAxis($universities_name);
-        $charts[$data_chart['id']] = $chart;
-
+        
+        $charts = [
+            'id' => $req->indicator,
+            'fact' => $universities_facts,
+            'plan' => $universities_plans,
+            'axis' => $universities_name,
+        ];
 
         return view('users.elements.chart-table', ['data_charts' => $charts]);
     }
+
     public function get_program_with_ajax(Request $req)
     {
         $data = IndicatorProgram::where('indicator_id', $req->id)
@@ -91,7 +95,7 @@ class AjaxController extends Controller
             'percent' => $percent,
         ]);
 
-        return('Успешно обновлено');
+        return ('Успешно обновлено');
     }
 
     public function update_priority_with_ajax(Request $req)
@@ -100,6 +104,6 @@ class AjaxController extends Controller
             'priority' => $req->priority,
         ]);
 
-        return('Успешно обновлено');
+        return ('Успешно обновлено');
     }
 }
