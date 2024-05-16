@@ -15,7 +15,7 @@ class ProgramController extends Controller
 {
     public function index($id)
     {
-        $data = Indicator::with('universityes')->find($id);
+        $data = Indicator::with('universityes')->find($id) ?? '';
         $universities = University::orderBy('name')->get();
         return view('admin.program.program_create', compact('data', 'universities'));
     }
@@ -60,7 +60,7 @@ class ProgramController extends Controller
         $data = $req->all();
 
 
-        $programs = Program::find($id);
+        $programs = Program::find($id) ?? '';
 
 
         return view('admin.program.program_update', compact('programs', 'dates', 'data'));

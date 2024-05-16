@@ -1,9 +1,9 @@
 @extends('admin.main')
-<link rel="stylesheet" type="text/css" href={{asset("dashboard/public/src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
+<link rel="stylesheet" type="text/css"
+      href={{asset("dashboard/public/src/plugins/src/vanillaSelectBox/vanillaSelectBox.css")}}>
 <link rel="stylesheet" type="text/css"
       href={{asset("dashboard/public/src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css")}}>
 @section('program_update')
-
 
     <style>
         .modal-content {
@@ -30,8 +30,18 @@
                             <input hidden id="date" name="date" class="flatpickr flatpickr-input" required>
                             <input type="hidden" name="indicator_id" value="{{$data['id_indicator']}}">
                             <input type="hidden" name="university_id" value="{{$data['university_id']}}">
-                            <input type="hidden" name="plan" value="{{$programs['plan']}}">
-                            <input type="hidden" name="name" value="{!! $programs['name'] !!}">
+                            <input type="hidden" name="plan" value="
+                            @if($programs)
+                            {{$programs['plan']}}
+                            @else
+                            @endif
+                            ">
+                            <input type="hidden" name="name" value="
+                            @if($programs)
+                            {!! $programs['name'] !!}
+                            @else
+                            @endif
+                            ">
                             <br>
                             <div style="text-align: center">
                                 <input type="submit" class="btn btn-light-success" value="Добавить">
@@ -73,14 +83,20 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <form action={{route('program.update') }} method="post" enctype="multipart/form-data" id="save">
+                            <form action={{route('program.update') }} method="post" enctype="multipart/form-data"
+                                  id="save">
                                 @csrf
                                 <div class="form-group">
                                     <label for="fact">Плановое значение</label>
                                     <input type="number" class="form-control mb-3"
                                            placeholder="Фактическое значение"
                                            id="plan" name="plan"
-                                           value="{{$programs['plan']}}">
+                                           value="
+                                            @if($programs)
+                            {{$programs['plan']}}
+                            @else
+                            @endif
+                            ">
                                 </div>
                                 <div class="statbox widget box box-shadow">
                                     <div class="widget-header">
@@ -92,7 +108,12 @@
                                     </div>
                                     <div class="widget-content widget-content-area">
                                         <div id="editor-container" style="height: 35%">
-                                            <label for="hiddenArea">{!! $programs['name'] !!}</label>
+                                            <label for="hiddenArea">
+                                                @if($programs)
+                                                    {!! $programs['name'] !!}
+                                                @else
+                                                @endif
+                                            </label>
                                             <textarea name="name" style="display:none"
                                                       id="hiddenArea"></textarea>
                                         </div>
@@ -104,7 +125,6 @@
                             </form>
                         </div>
                     </div>
-
 
 
                 </div>
