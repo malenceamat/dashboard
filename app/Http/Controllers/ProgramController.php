@@ -16,7 +16,7 @@ class ProgramController extends Controller
     public function index($id)
     {
         $data = Indicator::with('universityes')->find($id);
-        $universities = University::get();
+        $universities = University::orderBy('name')->get();
         return view('admin.program.program_create', compact('data', 'universities'));
     }
 

@@ -14,7 +14,7 @@ class AjaxController extends Controller
 {
     public function get_table_with_ajax(Request $req)
     {
-        $universities_data = University::get();
+        $universities_data = University::orderBy('name')->get();;
         $data_indicators = [];
         foreach ($universities_data as $university_data) {
             $university_id = $university_data->id;
@@ -38,7 +38,7 @@ class AjaxController extends Controller
 
     public function get_chart_with_ajax(Request $req)
     {
-        $universities_data = University::get();
+        $universities_data = University::orderBy('name')->get();;
         foreach ($universities_data as $university_data) {
 
 

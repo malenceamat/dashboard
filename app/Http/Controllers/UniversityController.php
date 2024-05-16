@@ -13,7 +13,7 @@ class UniversityController extends Controller
 {
     public function index()
     {
-        $university = University::get();
+        $university = University::orderBy('name')->get();
         return view('admin.universities.universities_create', compact('university'));
     }
 
@@ -39,7 +39,7 @@ class UniversityController extends Controller
     public function update_show($id)
     {
         $indicators = Indicator::orderBy('created_at')->get();
-        $data = University::with('pokazateli')->find($id);
+        $data = University::orderBy('name')->with('pokazateli')->find($id);
 
         return view('admin.universities.universities_edit', compact('data', 'indicators'));
     }
