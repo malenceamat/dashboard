@@ -98,8 +98,30 @@
                         @csrf
                         <button class="btn btn-light-danger">Удалить</button>
                     </form>
+                <td style="width: 10%;">
+                    <input onchange="changePriority({{$un->id}})" type="number" class="form-control"
+                           id="priority-{{$un->id}}"
+                           value="{{$un->priority}}">
+                </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 @endsection
+<script>
+
+    function changePriority(id) {
+        let val = document.getElementById('priority-' + id);
+        $.ajax({
+            url: '{{route('ajax.update_priority_university')}}',
+            type: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                id: id,
+                priority: val.value,
+            },
+            success: function (data) {
+            }
+        })
+    }
+</script>
