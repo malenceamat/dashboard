@@ -36,7 +36,7 @@
                             >Фактическое значение
                             </th>
                             <th class="text-center">
-                                Выполнено
+                                Выполенено
                             </th>
                         </tr>
                         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>

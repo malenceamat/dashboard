@@ -62,7 +62,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('ajax_get_program', [AjaxController::class, 'get_program_with_ajax'])->name('ajax.get_program');
         Route::post('ajax_update_fact', [AjaxController::class, 'update_fact_with_ajax'])->name('ajax.update_fact');
         Route::post('ajax_update_priority', [AjaxController::class, 'update_priority_with_ajax'])->name('ajax.update_priority');
-        Route::post('ajax_update_priority_university', [AjaxController::class, 'update_priority_university_with_ajax'])->name('ajax.update_priority_university');
     });
 });
 require __DIR__ . '/auth.php';

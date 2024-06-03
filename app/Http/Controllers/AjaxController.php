@@ -106,14 +106,4 @@ class AjaxController extends Controller
 
         return ('Успешно обновлено');
     }
-
-    //Метод для изменения приоритета универа
-    public function update_priority_university_with_ajax(Request $req)
-    {
-        University::where('id', $req->id)->update([
-            'priority' => $req->priority,
-        ]);
-
-        return ('Успешно обновлено');
-    }
 }
