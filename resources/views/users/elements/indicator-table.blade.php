@@ -35,10 +35,10 @@
         @endforeach
 
                 <tr style="word-break: break-all">
-                    <td class="text-center">Итого</td>
-                    <td class="text-center">{{$sum_data_indicator['plan']}}</td>
-                    <td class="text-center">{{$sum_data_indicator['fact']}}</td>
-                    <td class="text-center">{{$sum_data_indicator['percent']}} %</td>
+                    <td class="text-center"><strong>Итого</strong></td>
+                    <td class="text-center"><strong>{{$sum_data_indicator['plan']}}</strong></td>
+                    <td class="text-center"><strong>{{$sum_data_indicator['fact']}}</strong></td>
+                    <td class="text-center"><strong>{{$sum_data_indicator['percent']}} %</strong></td>
                 </tr>
             </tbody>
         </table>
