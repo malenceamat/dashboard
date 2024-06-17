@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $universities = University::orderBy('name')->get();
+        $universities = University::orderBy('priority')->get();
         $indicators = Indicator::orderBy('priority')->get();
 
         $data = [];
