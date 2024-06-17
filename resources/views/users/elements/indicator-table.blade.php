@@ -5,15 +5,11 @@
                 >Институт
                 </th>
                 <th class="text-center">
-                    Описание
-                </th>
-                <th class="text-center">
                     Плановое значение
                 </th>
                 <th class="text-center" scope="col"
                 >Фактическое значение
                 </th>
-
                 <th class="text-center">
                     Выполнено
                 </th>
@@ -26,9 +22,6 @@
                 <td class="text-center"
                 >{{ $el['name'] }}
                 </td>
-                <td class="text-center sem "
-                >{!!$el['description']!!}
-                </td>
                 <td class="text-center"
                 >{{$el['plan']}}
                 </td>
@@ -40,6 +33,13 @@
                 </td>
             </tr>
         @endforeach
+
+                <tr style="word-break: break-all">
+                    <td class="text-center">Итого</td>
+                    <td class="text-center">{{$sum_data_indicator['plan']}}</td>
+                    <td class="text-center">{{$sum_data_indicator['fact']}}</td>
+                    <td class="text-center">{{$sum_data_indicator['percent']}} %</td>
+                </tr>
             </tbody>
         </table>
 

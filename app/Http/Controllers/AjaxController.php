@@ -14,7 +14,7 @@ class AjaxController extends Controller
 {
     public function get_table_with_ajax(Request $req)
     {
-        $universities_data = University::orderBy('name')->get();;
+        $universities_data = University::orderBy('name')->get();
         $data_indicators = [];
         foreach ($universities_data as $university_data) {
             $university_id = $university_data->id;
@@ -26,14 +26,21 @@ class AjaxController extends Controller
 
             $data_indicator = array(
                 'name' => $university_data->name,
-                'description' => $programs->name ?? 0,
                 'fact' => $programs->fact ?? 0,
                 'plan' => $programs->plan ?? 0,
                 'percent' => $programs->percent ?? 0
             );
             $data_indicators[$university_id] = array_merge($data_indicator);
         }
-        return view('users.elements.indicator-table', ['data_indicators' => $data_indicators]);
+        $indicator = IndicatorProgram::where('indicator_id', $req->indicator)
+            ->join('programs', 'program_id', '=', 'id');
+
+        $sum_data_indicator = array(
+            'fact' => $indicator->sum('fact') ?? 0,
+            'plan' => $indicator->sum('plan') ?? 0,
+            'percent' => $indicator->pluck('percent')->avg() ?? 0
+        );
+        return view('users.elements.indicator-table', ['data_indicators' => $data_indicators, 'sum_data_indicator' => $sum_data_indicator]);
     }
 
     public function get_chart_with_ajax(Request $req)
