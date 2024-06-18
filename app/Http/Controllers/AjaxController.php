@@ -38,7 +38,7 @@ class AjaxController extends Controller
         $sum_data_indicator = array(
             'fact' => $indicator->sum('fact') ?? 0,
             'plan' => $indicator->sum('plan') ?? 0,
-            'percent' => round($indicator->pluck('percent')->avg(),2 ) ?? 0
+            'percent' => round($indicator->sum('fact')/$indicator->sum('plan')*100,2) ?? 0,
         );
         return view('users.elements.indicator-table', ['data_indicators' => $data_indicators, 'sum_data_indicator' => $sum_data_indicator]);
     }
