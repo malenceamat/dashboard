@@ -11,7 +11,7 @@ class University extends Model
 
     protected $table = 'universities';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'priority'];
 
     public function pokazateli()
     {
