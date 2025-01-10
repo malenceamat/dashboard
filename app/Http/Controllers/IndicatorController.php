@@ -66,7 +66,7 @@ class IndicatorController extends Controller
         $totals = [
             'total_plan' => $collection->sum('plan'),
             'total_fact' => $collection->sum('fact'),
-            'total_percent' => round(($collection->sum('fact') * 100) / $indicator->planned, 2),
+            'total_percent' => round(($collection->sum('fact') / $collection->sum('plan')) * 100, 2),
         ];
 
         return view('admin.indicator.indicator_edit', compact('indicator', 'data', 'totals'));
